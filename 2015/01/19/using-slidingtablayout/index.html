@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>使用SlidingTabLayout和ViewPager打造Tabs布局 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="将官方的SlidingTabLayout.java和SlidingTabStrip.java拷到自己的项目里面。
+修改布局
+&amp;lt;LinearLayout       android:layout_width=&quot;match_parent&quot;       android:layout_height=&quot;match_parent&quot;       android:orientation=&quot;vertical&quot;">
+  
+  <meta name="description" content="将官方的SlidingTabLayout.java和SlidingTabStrip.java拷到自己的项目里面。
+修改布局
+&amp;lt;LinearLayout       android:layout_width=&quot;match_parent&quot;       android:layout_height=&quot;match_parent&quot;       android:orientation=&quot;vertical&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用SlidingTabLayout和ViewPager打造Tabs布局">
+<meta property="og:url" content="http://yoursite.com/2015/01/19/using-slidingtablayout/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="将官方的SlidingTabLayout.java和SlidingTabStrip.java拷到自己的项目里面。
+修改布局
+&amp;lt;LinearLayout       android:layout_width=&quot;match_parent&quot;       android:layout_height=&quot;match_parent&quot;       android:orientation=&quot;vertical&quot;">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/slidingtablayout.png">
+<meta property="og:updated_time" content="2015-11-25T15:50:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用SlidingTabLayout和ViewPager打造Tabs布局">
+<meta name="twitter:description" content="将官方的SlidingTabLayout.java和SlidingTabStrip.java拷到自己的项目里面。
+修改布局
+&amp;lt;LinearLayout       android:layout_width=&quot;match_parent&quot;       android:layout_height=&quot;match_parent&quot;       android:orientation=&quot;vertical&quot;">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Hexo</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/01/19/using-slidingtablayout/">
+  <time datetime="2015-01-19T07:00:00.000Z">
+    2015-01-19
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">使用SlidingTabLayout和ViewPager打造Tabs布局</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>将官方的<a href="https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/widget/SlidingTabLayout.java" target="_blank" rel="external"><strong>SlidingTabLayout.java</strong></a>和<a href="https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/widget/SlidingTabStrip.java" target="_blank" rel="external"><strong>SlidingTabStrip.java</strong></a>拷到自己的项目里面。</p>
+<p>修改布局</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">       <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">       <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">       <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="title">cn.treize.paperpomodoro.view.SlidingTabLayout</span></span><br><span class="line">           <span class="attribute">android:id</span>=<span class="value">"@+id/tabs"</span></span><br><span class="line">           <span class="attribute">android:background</span>=<span class="value">"@color/color_primary"</span></span><br><span class="line">           <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">           <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span> /&gt;</span></span><br><span class="line">	</span><br><span class="line">       <span class="tag">&lt;<span class="title">android.support.v4.view.ViewPager</span></span><br><span class="line">           <span class="attribute">android:id</span>=<span class="value">"@+id/pager"</span></span><br><span class="line">           <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">           <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">           <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改MainActivity.java</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ActionBarActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ViewPager mPager;</span><br><span class="line">    <span class="keyword">private</span> SlidingTabLayout mTabs;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">	</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        mPager = (ViewPager) findViewById(R.id.pager);</span><br><span class="line">        mPager.setAdapter(<span class="keyword">new</span> MyPagerAdapter(getSupportFragmentManager()));</span><br><span class="line">        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);</span><br><span class="line">        mTabs.setViewPager(mPager);</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyPagerAdapter</span> <span class="keyword">extends</span> <span class="title">FragmentPagerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String[] tabs = <span class="keyword">new</span>  String[] &#123;</span><br><span class="line">                <span class="string">"待办事项"</span>,</span><br><span class="line">                <span class="string">"番茄闹钟"</span>,</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyPagerAdapter</span><span class="params">(FragmentManager fm)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(fm);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Fragment <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">            MyFragment myFragment = MyFragment.getInstance(i);</span><br><span class="line">            <span class="keyword">return</span> myFragment;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> CharSequence <span class="title">getPageTitle</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> tabs[position];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView textView;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MyFragment <span class="title">getInstance</span><span class="params">(<span class="keyword">int</span> position)</span></span>&#123;</span><br><span class="line">            MyFragment myFragment = <span class="keyword">new</span> MyFragment();</span><br><span class="line">            Bundle args = <span class="keyword">new</span> Bundle();</span><br><span class="line">            args.putInt(<span class="string">"position"</span>, position);</span><br><span class="line">            myFragment.setArguments(args);</span><br><span class="line">            <span class="keyword">return</span>  myFragment;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">            View layout = inflater.inflate(R.layout.fragment_my, container, <span class="keyword">false</span>);</span><br><span class="line">            textView = (TextView) layout.findViewById(R.id.position);</span><br><span class="line">            Bundle bundle = getArguments();</span><br><span class="line">            <span class="keyword">if</span> (bundle!= <span class="keyword">null</span>)&#123;</span><br><span class="line">                textView.setText(<span class="string">"The page Selected is "</span>+ bundle.getInt(<span class="string">"position"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> layout;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Fragment的布局文件只是随便弄了个TextView。</p>
+<p>效果</p>
+<p><img src="http://treizeor.qiniudn.com/img/slidingtablayout.png" alt=""></p>
+<p>有人可能发现TAB没有适应屏幕，怎么实现呢，看<a href="http://stackoverflow.com/questions/26803835/slidingtablayout-to-fit-the-screen" target="_blank" rel="external"><strong>StackOverFlow</strong></a>这里，有好几种实现方法，这里就不说了。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/learning/">learning</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/android/">android</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="使用SlidingTabLayout和ViewPager打造Tabs布局">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'mindofme' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

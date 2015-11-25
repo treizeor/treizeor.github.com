@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Raspberry Pi无线网卡配置 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="前段时间入手了一个树莓派，作为个人学习用途等不愧为利器。为了方便在不同场地使用，不用拖着网线和自动接入不同WIFI。一个无线网卡是必须的。针对不同WIFI进行设置也是有必要的。
+因此，这里简单记录下配置，主要涉及两个文件：
+cat /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant G">
+  
+  <meta name="description" content="前段时间入手了一个树莓派，作为个人学习用途等不愧为利器。为了方便在不同场地使用，不用拖着网线和自动接入不同WIFI。一个无线网卡是必须的。针对不同WIFI进行设置也是有必要的。
+因此，这里简单记录下配置，主要涉及两个文件：
+cat /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry Pi无线网卡配置">
+<meta property="og:url" content="http://yoursite.com/2014/12/07/setup-wifi-on-raspi/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前段时间入手了一个树莓派，作为个人学习用途等不愧为利器。为了方便在不同场地使用，不用拖着网线和自动接入不同WIFI。一个无线网卡是必须的。针对不同WIFI进行设置也是有必要的。
+因此，这里简单记录下配置，主要涉及两个文件：
+cat /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant G">
+<meta property="og:updated_time" content="2015-11-25T15:34:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Raspberry Pi无线网卡配置">
+<meta name="twitter:description" content="前段时间入手了一个树莓派，作为个人学习用途等不愧为利器。为了方便在不同场地使用，不用拖着网线和自动接入不同WIFI。一个无线网卡是必须的。针对不同WIFI进行设置也是有必要的。
+因此，这里简单记录下配置，主要涉及两个文件：
+cat /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant G">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Hexo</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2014/12/07/setup-wifi-on-raspi/">
+  <time datetime="2014-12-07T07:00:00.000Z">
+    2014-12-07
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Raspberry Pi无线网卡配置</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>前段时间入手了一个树莓派，作为个人学习用途等不愧为利器。为了方便在不同场地使用，不用拖着网线和自动接入不同WIFI。一个无线网卡是必须的。针对不同WIFI进行设置也是有必要的。</p>
+<p>因此，这里简单记录下配置，主要涉及两个文件：</p>
+<p><code>cat /etc/wpa_supplicant/wpa_supplicant.conf</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">        ssid=<span class="string">"your_ssid_1"</span></span><br><span class="line">        scan_ssid=<span class="number">1</span>      <span class="preprocessor"># 隐藏的ssid需要加该字段</span></span><br><span class="line">        psk=<span class="string">"password"</span></span><br><span class="line">        key_mgmt=WPA-PSK <span class="preprocessor"># 加密方式</span></span><br><span class="line">        id_str=<span class="string">"home"</span>    <span class="preprocessor"># 设置标签,在interfaces中会用到</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">        ssid=<span class="string">"your_ssid_2"</span></span><br><span class="line">        psk=<span class="string">"password"</span></span><br><span class="line">        key_mgmt=WPA-PSK</span><br><span class="line">        id_str=<span class="string">"phone"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">        ssid=<span class="string">"your_ssid_3"</span></span><br><span class="line">        psk=<span class="string">"password"</span></span><br><span class="line">        key_mgmt=WPA-PSK</span><br><span class="line">        id_str=<span class="string">"work"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>cat /etc/network/interfaces</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> lo</span><br><span class="line"></span><br><span class="line">iface lo inet loopback</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"></span><br><span class="line">allow-hotplug wlan0</span><br><span class="line">iface wlan0 inet manual</span><br><span class="line">wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line"><span class="preprocessor"># iface default inet dhcp</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 对不同的wifi分别设置，可为动态获取或静态</span></span><br><span class="line">iface home inet <span class="keyword">static</span></span><br><span class="line">address <span class="number">192.168</span><span class="number">.3</span><span class="number">.8</span></span><br><span class="line">gateway <span class="number">192.168</span><span class="number">.3</span><span class="number">.1</span></span><br><span class="line">netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">iface phone inet dhcp</span><br><span class="line"></span><br><span class="line">iface work inet <span class="keyword">static</span></span><br><span class="line">address <span class="number">19.128</span><span class="number">.117</span><span class="number">.233</span></span><br><span class="line">gateway <span class="number">19.128</span><span class="number">.117</span><span class="number">.254</span></span><br><span class="line">netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/learning/">learning</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/raspberrypi/">raspberrypi</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="Raspberry Pi无线网卡配置">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'mindofme' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

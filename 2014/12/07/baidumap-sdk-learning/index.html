@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>百度地图SDK之定位功能 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="准备工作
+获取密钥: 具体步骤看这里
+下载库文件: 链接
+
+事实上，我觉得百度的Android定位SDK开发指南已经很详细了。本文中的例子就是根据开发指南写的。
+具体实现设置AndroidManifest.xml
+在application标签中声明service组件,每个app拥有自己单独的定位service
+&amp;lt;service android:name=&quot;com.baidu.location">
+  
+  <meta name="description" content="准备工作
+获取密钥: 具体步骤看这里
+下载库文件: 链接
+
+事实上，我觉得百度的Android定位SDK开发指南已经很详细了。本文中的例子就是根据开发指南写的。
+具体实现设置AndroidManifest.xml
+在application标签中声明service组件,每个app拥有自己单独的定位service
+&amp;lt;service android:name=&quot;com.baidu.location">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度地图SDK之定位功能">
+<meta property="og:url" content="http://yoursite.com/2014/12/07/baidumap-sdk-learning/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="准备工作
+获取密钥: 具体步骤看这里
+下载库文件: 链接
+
+事实上，我觉得百度的Android定位SDK开发指南已经很详细了。本文中的例子就是根据开发指南写的。
+具体实现设置AndroidManifest.xml
+在application标签中声明service组件,每个app拥有自己单独的定位service
+&amp;lt;service android:name=&quot;com.baidu.location">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/Screenshot_2014-12-07-15-40-09.png?imageMogr2/thumbnail/!50p">
+<meta property="og:updated_time" content="2015-11-25T15:16:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度地图SDK之定位功能">
+<meta name="twitter:description" content="准备工作
+获取密钥: 具体步骤看这里
+下载库文件: 链接
+
+事实上，我觉得百度的Android定位SDK开发指南已经很详细了。本文中的例子就是根据开发指南写的。
+具体实现设置AndroidManifest.xml
+在application标签中声明service组件,每个app拥有自己单独的定位service
+&amp;lt;service android:name=&quot;com.baidu.location">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Hexo</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2014/12/07/baidumap-sdk-learning/">
+  <time datetime="2014-12-07T11:10:34.000Z">
+    2014-12-07
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">百度地图SDK之定位功能</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="准备工作">准备工作</h3><ul>
+<li>获取密钥: 具体步骤看<a href="http://developer.baidu.com/map/wiki/index.php?title=androidsdk/guide/key" target="_blank" rel="external"><strong>这里</strong></a></li>
+<li>下载库文件: <a href="http://developer.baidu.com/map/index.php?title=android-locsdk/geosdk-android-download" target="_blank" rel="external"><strong>链接</strong></a></li>
+</ul>
+<p>事实上，我觉得百度的Android定位SDK<a href="http://developer.baidu.com/map/index.php?title=android-locsdk/guide/v4-2" target="_blank" rel="external"><strong>开发指南</strong></a>已经很详细了。本文中的例子就是根据开发指南写的。</p>
+<h3 id="具体实现">具体实现</h3><p>设置<strong>AndroidManifest.xml</strong></p>
+<p>在application标签中声明service组件,每个app拥有自己单独的定位service</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"&gt;</span><br><span class="line">&lt;/service&gt;</span><br></pre></td></tr></table></figure>
+<p>声明使用权限</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 这个权限用于进行网络定位 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 这个权限用于访问GPS定位 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 获取运营商信息，用于支持提供运营商信息相关的接口 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.CHANGE_WIFI_STATE" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 用于读取手机当前的状态 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 访问网络，网络定位需要上网 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.INTERNET" /&gt;</span><br><span class="line">&lt;!-- SD卡读取权限，用户写入离线定位数据 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 允许应用读取低级别的系统日志文件 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.READ_LOGS" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br><span class="line">&lt;!-- 允许应用读取低级别的系统日志文件 --&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.READ_LOGS" &gt;</span><br><span class="line">&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
+<p>在application中设置AcessKey</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;meta-data</span><br><span class="line">            android:name=<span class="string">"com.baidu.lbsapi.API_KEY"</span></span><br><span class="line">            android:value=<span class="string">"key"</span> /&gt; </span><br><span class="line">            &lt;!-- key:开发者申请的key,即准备工作中的密钥ak --&gt;</span><br></pre></td></tr></table></figure>
+<p>代码实现: <strong>MainActivity.java</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LocationClient mLocationClient;</span><br><span class="line">    <span class="keyword">public</span> BDLocationListener myListener = <span class="keyword">new</span> MyLocationListener();</span><br><span class="line">    <span class="keyword">public</span> NotifyListener mNotifyListener;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> EditText showLocation;</span><br><span class="line">    <span class="keyword">private</span> Button startNotify, stopNotify;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        showLocation = (EditText) findViewById(R.id.showLocation);</span><br><span class="line">        startNotify = (Button) findViewById(R.id.startNotify);</span><br><span class="line">        stopNotify = (Button) findViewById(R.id.stopNotify);</span><br><span class="line">        mLocationClient = <span class="keyword">new</span> LocationClient(getApplicationContext());</span><br><span class="line"></span><br><span class="line">        LocationClientOption option = <span class="keyword">new</span> LocationClientOption();</span><br><span class="line">        option.setLocationMode(LocationMode.Hight_Accuracy); <span class="comment">// 设置定位模式</span></span><br><span class="line">        option.setCoorType(<span class="string">"bd0911"</span>); <span class="comment">// 返回的定位结果是百度经纬度，默认值gcj02</span></span><br><span class="line">        option.setScanSpan(<span class="number">5000</span>); <span class="comment">// 发起定位请求时间间隔为5000ms</span></span><br><span class="line">        option.setIsNeedAddress(<span class="keyword">true</span>); <span class="comment">// 返回的结果包含地址信息</span></span><br><span class="line">        option.setNeedDeviceDirect(<span class="keyword">true</span>); <span class="comment">// 返回定位结果包含手机朝向</span></span><br><span class="line">        option.setOpenGps(<span class="keyword">true</span>); <span class="comment">// 设置打开GPS，默认是不打开的</span></span><br><span class="line">        mLocationClient.setLocOption(option);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 注册监听器</span></span><br><span class="line">        mLocationClient.registerLocationListener(myListener);</span><br><span class="line">        mLocationClient.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">new</span> Timer().schedule(<span class="keyword">new</span> TimerTask() &#123;</span><br><span class="line"></span><br><span class="line">                    <span class="annotation">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">                        <span class="comment">// 每隔3秒请求一次位置信息</span></span><br><span class="line">                        mLocationClient.requestLocation();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, <span class="number">0</span>, <span class="number">300</span>);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 位置提醒</span></span><br><span class="line">        startNotify.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                mNotifyListener = <span class="keyword">new</span> NotifyListener();</span><br><span class="line">                <span class="comment">// 4个参数代表要位置提醒的点的坐标，具体含义依次为：纬度，经度，距离范围，坐标系类型(gcj02,gps,bd09,bd09ll)</span></span><br><span class="line">                mNotifyListener.SetNotifyLocation(<span class="number">23.0206</span>, <span class="number">113.0960</span>, <span class="number">3000</span>,</span><br><span class="line">                        <span class="string">"gcj02"</span>);</span><br><span class="line">                <span class="comment">// 注册位置监听提醒</span></span><br><span class="line">                mLocationClient.registerNotify(mNotifyListener);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        stopNotify.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">                mLocationClient.removeNotifyEvent(mNotifyListener);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        mLocationClient.stop();</span><br><span class="line">        mLocationClient.unRegisterLocationListener(myListener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLocationListener</span> <span class="keyword">implements</span> <span class="title">BDLocationListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceiveLocation</span><span class="params">(BDLocation location)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">            <span class="keyword">if</span> (location == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            sb.append(<span class="string">"time: "</span>);</span><br><span class="line">            sb.append(location.getTime());</span><br><span class="line">            sb.append(<span class="string">"\nerr code: "</span>);</span><br><span class="line">            sb.append(location.getLocType());</span><br><span class="line">            sb.append(<span class="string">"\nlatitude: "</span>);</span><br><span class="line">            sb.append(location.getLatitude());</span><br><span class="line">            sb.append(<span class="string">"\nlongitude: "</span>);</span><br><span class="line">            sb.append(location.getLongitude());</span><br><span class="line">            sb.append(<span class="string">"\nradius: "</span>);</span><br><span class="line">            sb.append(location.getRadius());</span><br><span class="line">            <span class="keyword">if</span> (location.getLocType() == BDLocation.TypeGpsLocation) &#123;</span><br><span class="line">                sb.append(<span class="string">"\nspeed: "</span>);</span><br><span class="line">                sb.append(location.getSpeed());</span><br><span class="line">                sb.append(<span class="string">"\nsatellite: "</span>);</span><br><span class="line">                sb.append(location.getSatelliteNumber());</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (location.getLocType() == BDLocation.TypeNetWorkLocation) &#123;</span><br><span class="line">                sb.append(<span class="string">"\naddr: "</span>);</span><br><span class="line">                sb.append(location.getAddrStr()); <span class="comment">// 获取反地理编码地址</span></span><br><span class="line">                sb.append(<span class="string">"\nprovince: "</span>);</span><br><span class="line">                sb.append(location.getProvince());</span><br><span class="line">                sb.append(<span class="string">"\ncity: "</span>);</span><br><span class="line">                sb.append(location.getCity());</span><br><span class="line">                sb.append(<span class="string">"\ndistrict: "</span>);</span><br><span class="line">                sb.append(location.getDistrict());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// logMsg(sb.toString());</span></span><br><span class="line">            showLocation.setText(sb.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotifyListener</span> <span class="keyword">extends</span> <span class="title">BDNotifyListener</span> </span>&#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotify</span><span class="params">(BDLocation location, <span class="keyword">float</span> distance)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">            Toast.makeText(</span><br><span class="line">                    getApplicationContext(),</span><br><span class="line">                    <span class="string">"距离"</span> + location.getAddrStr() + String.valueOf(distance)</span><br><span class="line">                            + <span class="string">"米"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图</p>
+<p><img src="http://treizeor.qiniudn.com/img/Screenshot_2014-12-07-15-40-09.png?imageMogr2/thumbnail/!50p" alt="百度定位"></p>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/learning/">learning</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/android/">android</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="百度地图SDK之定位功能">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'mindofme' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

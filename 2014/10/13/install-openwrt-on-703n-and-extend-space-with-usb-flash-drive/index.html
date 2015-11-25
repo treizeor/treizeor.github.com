@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>WR703N刷OpenWrt及使用U盘扩容 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="安装路由器分两种情况，一种是没原厂固件没刷过的，一种是已经刷过需要重刷的。
+
+没刷过的话很简单，直接在OpenWrt的Wiki页下载squashfs-factory.bin，然后进入路由器管理界面更新固件，选择下载的固件更新就可以了
+刷过的话则ssh进入路由器(话说既然刷过，那还用看这个吗。最近老感觉什么都没必要写，Google用得太多了的缘故吗)，切换到/tmp目录
+
+cd /tmp
+然后wge">
+  
+  <meta name="description" content="安装路由器分两种情况，一种是没原厂固件没刷过的，一种是已经刷过需要重刷的。
+
+没刷过的话很简单，直接在OpenWrt的Wiki页下载squashfs-factory.bin，然后进入路由器管理界面更新固件，选择下载的固件更新就可以了
+刷过的话则ssh进入路由器(话说既然刷过，那还用看这个吗。最近老感觉什么都没必要写，Google用得太多了的缘故吗)，切换到/tmp目录
+
+cd /tmp
+然后wge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WR703N刷OpenWrt及使用U盘扩容">
+<meta property="og:url" content="http://yoursite.com/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装路由器分两种情况，一种是没原厂固件没刷过的，一种是已经刷过需要重刷的。
+
+没刷过的话很简单，直接在OpenWrt的Wiki页下载squashfs-factory.bin，然后进入路由器管理界面更新固件，选择下载的固件更新就可以了
+刷过的话则ssh进入路由器(话说既然刷过，那还用看这个吗。最近老感觉什么都没必要写，Google用得太多了的缘故吗)，切换到/tmp目录
+
+cd /tmp
+然后wge">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/putty_telnet.jpg">
+<meta property="og:updated_time" content="2015-11-25T15:29:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WR703N刷OpenWrt及使用U盘扩容">
+<meta name="twitter:description" content="安装路由器分两种情况，一种是没原厂固件没刷过的，一种是已经刷过需要重刷的。
+
+没刷过的话很简单，直接在OpenWrt的Wiki页下载squashfs-factory.bin，然后进入路由器管理界面更新固件，选择下载的固件更新就可以了
+刷过的话则ssh进入路由器(话说既然刷过，那还用看这个吗。最近老感觉什么都没必要写，Google用得太多了的缘故吗)，切换到/tmp目录
+
+cd /tmp
+然后wge">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Hexo</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/">
+  <time datetime="2014-10-13T11:10:34.000Z">
+    2014-10-13
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">WR703N刷OpenWrt及使用U盘扩容</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="安装">安装</h3><p>路由器分两种情况，一种是没原厂固件没刷过的，一种是已经刷过需要重刷的。</p>
+<ul>
+<li>没刷过的话很简单，直接在OpenWrt的<a href="http://wiki.openwrt.org/toh/tp-link/tl-wr703n" target="_blank" rel="external"><em>Wiki</em></a>页下载<a href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-tl-wr703n-v1-squashfs-factory.bin" target="_blank" rel="external"><em>squashfs-factory.bin</em></a>，然后进入路由器管理界面更新固件，选择下载的固件更新就可以了</li>
+<li>刷过的话则ssh进入路由器(<del>话说既然刷过，那还用看这个吗。最近老感觉什么都没必要写，Google用得太多了的缘故吗</del>)，切换到<code>/tmp</code>目录</li>
+</ul>
+<p><code>cd /tmp</code></p>
+<p>然后wget下载固件</p>
+<p><code>wget http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-tl-wr703n-v1-squashfs-factory.bin</code></p>
+<p>完成后用<code>mtd</code>命令刷入</p>
+<p><code>mtd -r write openwrt-ar71xx-generic-tl-wr703n-v1-squashfs-factory.bin firmware</code></p>
+<p>刷完会自动重启。</p>
+<h3 id="配置">配置</h3><p>电脑用网线直接连接路由器，本地连接IP设为192.168.1.2(<em>2至254都可以</em>)，然后telnet进入<code>192.168.1.1</code>(<em>这是路由器的默认IP</em>)，telnet工具可以用<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank" rel="external"><strong>putty</strong></a>，如下图:</p>
+<p><img src="http://treizeor.qiniudn.com/img/putty_telnet.jpg" alt="putty_telnet"></p>
+<p>然后就是修改密码和<del>修改默认IP</del>了(我这里主要拿来接在另一个路由器上面的做下载机和NAS的)</p>
+<p>使用命令<code>passwd 新密码</code>进行修改。</p>
+<p><code>vi /etc/config/network</code>改路由器IP，增加<code>gateway</code>,<code>dns</code>设置，根据自己的情况修改</p>
+<figure class="highlight vbnet"><table><tr><td class="code"><pre><span class="line">config <span class="keyword">interface</span> <span class="comment">'loopback'</span></span><br><span class="line">        <span class="keyword">option</span> ifname <span class="comment">'lo'</span></span><br><span class="line">        <span class="keyword">option</span> proto <span class="comment">'static'</span></span><br><span class="line">        <span class="keyword">option</span> ipaddr <span class="comment">'127.0.0.1'</span></span><br><span class="line">        <span class="keyword">option</span> netmask <span class="comment">'255.0.0.0'</span></span><br><span class="line"></span><br><span class="line">config <span class="keyword">interface</span> <span class="comment">'lan'</span></span><br><span class="line">        <span class="keyword">option</span> ifname <span class="comment">'eth0'</span></span><br><span class="line">        <span class="keyword">option</span> type <span class="comment">'bridge'</span></span><br><span class="line">        <span class="keyword">option</span> proto <span class="comment">'static'</span></span><br><span class="line">        <span class="keyword">option</span> ipaddr <span class="comment">'192.168.3.2'</span></span><br><span class="line">        <span class="keyword">option</span> netmask <span class="comment">'255.255.255.0'</span></span><br><span class="line">        <span class="keyword">option</span> gateway <span class="comment">'192.168.3.1'</span></span><br><span class="line">        <span class="keyword">option</span> dns <span class="comment">'8.8.8.8'</span></span><br></pre></td></tr></table></figure>
+<p>OK，<code>reboot</code>并把网线接到路由器上。现在可以<code>ssh</code>进路由器了。</p>
+<h3 id="挂载U盘扩容">挂载U盘扩容</h3><p>命令<code>opkg update</code>下载软件包列表</p>
+<p>安装几个软件包，因为703N的flash只有4M，没法装太多东西，所以同过U盘扩容可以做更多事。这里只安装几个必要的，实际上在使用U盘之前的还是要分下区，不过最好在电脑上分好。我是接在树莓派上分好的，有3个区，第一个是ext4用来给系统扩容，第二个是swap交换分区，分个64M也就差不多了，事实上这个分区没见用过。第三个就随便了nfs或ext4，我这里是ext4。</p>
+<p><code>opkg install block-mount kmod-fs-ext4 kmod-usb-ohci kmod-usb-storage</code></p>
+<p>完成后插入U盘看看是否识别<code>ls /dev</code>是否有sda,sda1,sda2,sda3存在</p>
+<p>接下来把系统复制到U盘<code>sda1</code>分区依次执行</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>sda1 /mnt  </span><br><span class="line">mkdir <span class="regexp">/tmp/</span>root  </span><br><span class="line">mount -o bind <span class="regexp">/ /</span>tmp/root  </span><br><span class="line">cp <span class="regexp">/tmp/</span>root<span class="comment">/* /mnt -a  </span><br><span class="line">umount /tmp/root</span></span><br></pre></td></tr></table></figure>
+<p>然后设置好交换空间</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">mkswap <span class="regexp">/dev/</span>sda2  </span><br><span class="line">swapon <span class="regexp">/dev/</span>sda2</span><br></pre></td></tr></table></figure>
+<p>最后编辑<code>/etc/config/fstab</code>文件</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">config mount  </span><br><span class="line">        <span class="keyword">option</span> target   /overlay</span><br><span class="line">        <span class="keyword">option</span> device   /dev/sda1</span><br><span class="line">        <span class="keyword">option</span> fstype   ext4</span><br><span class="line">        <span class="keyword">option</span> <span class="keyword">options</span>  rw,sync</span><br><span class="line">        <span class="keyword">option</span> enabled  <span class="number">1</span></span><br><span class="line">        <span class="keyword">option</span> enabled_fsck <span class="number">0</span></span><br><span class="line">config swap  </span><br><span class="line">        <span class="keyword">option</span> device   /dev/sda2</span><br><span class="line">        <span class="keyword">option</span> enabled  <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>重启后，<code>df -h</code>看看空间是否扩大了，<code>sda3</code>会自动挂载到<code>/mnt/sda3</code>的。可以修改<code>/etc/banner</code>区别内置和U盘启动。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/learning/">learning</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/openwrt/">openwrt</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="WR703N刷OpenWrt及使用U盘扩容">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'mindofme' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

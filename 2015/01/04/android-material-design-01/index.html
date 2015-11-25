@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Material实践Toolbar和DrawerLayout的使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="设置Theme及定义基本颜色根据官方设计规范(Color)，定义一些用到的颜色:
+
+Toolbars and larger color blocks should use the primary 500 color, which should be the main color of your app. The status bar should be the darker 700 tint of">
+  
+  <meta name="description" content="设置Theme及定义基本颜色根据官方设计规范(Color)，定义一些用到的颜色:
+
+Toolbars and larger color blocks should use the primary 500 color, which should be the main color of your app. The status bar should be the darker 700 tint of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Material实践Toolbar和DrawerLayout的使用">
+<meta property="og:url" content="http://yoursite.com/2015/01/04/android-material-design-01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="设置Theme及定义基本颜色根据官方设计规范(Color)，定义一些用到的颜色:
+
+Toolbars and larger color blocks should use the primary 500 color, which should be the main color of your app. The status bar should be the darker 700 tint of">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/material_design_toolbar_1.png">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/material_design_drawerlayout_1.png">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/material_design_drawerlayout_2.png">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/material_design_drawerlayout_3.png">
+<meta property="og:updated_time" content="2015-11-25T15:44:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Material实践Toolbar和DrawerLayout的使用">
+<meta name="twitter:description" content="设置Theme及定义基本颜色根据官方设计规范(Color)，定义一些用到的颜色:
+
+Toolbars and larger color blocks should use the primary 500 color, which should be the main color of your app. The status bar should be the darker 700 tint of">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Hexo</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/01/04/android-material-design-01/">
+  <time datetime="2015-01-04T07:00:00.000Z">
+    2015-01-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Material实践Toolbar和DrawerLayout的使用</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="设置Theme及定义基本颜色">设置Theme及定义基本颜色</h3><p>根据官方设计规范(<a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application" target="_blank" rel="external"><strong>Color</strong></a>)，定义一些用到的颜色:</p>
+<blockquote>
+<p>Toolbars and larger color blocks should use the primary <strong>500</strong> color, which should be the main color of your app. The status bar should be the darker <strong>700</strong> tint of your primary color.</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!--values/colors.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">color</span> <span class="attribute">name</span>=<span class="value">"color_primary"</span>&gt;</span>#3F51B5<span class="tag">&lt;/<span class="title">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">color</span> <span class="attribute">name</span>=<span class="value">"color_primary_dark"</span>&gt;</span>#303F9F<span class="tag">&lt;/<span class="title">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">color</span> <span class="attribute">name</span>=<span class="value">"color_accent"</span>&gt;</span>#E91E63<span class="tag">&lt;/<span class="title">color</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对Lollipop及以下的安卓版本使用不同的styles.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- values/styles.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme"</span> <span class="attribute">parent</span>=<span class="value">"AppTheme.Base"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;!<span class="tag">--</span> <span class="tag">Customize</span> <span class="tag">your</span> <span class="tag">theme</span> <span class="tag">here</span>. <span class="tag">--</span>&gt;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme.Base"</span> <span class="attribute">parent</span>=<span class="value">"Theme.AppCompat.NoActionBar"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">colorPrimary</span>"&gt;<span class="at_rule">@<span class="keyword">color/color_primary&lt;/item&gt;</span></span><br><span class="line">        &lt;item name=<span class="string">"colorPrimaryDark"</span>&gt;@color/color_primary_dark&lt;/item&gt;</span><br><span class="line">        &lt;item name=<span class="string">"colorAccent"</span>&gt;@color/color_accent&lt;/item&gt;</span><br><span class="line">    </span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- values-v21/styles.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme"</span> <span class="attribute">parent</span>=<span class="value">"AppTheme.Base"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">android</span><span class="pseudo">:colorPrimary"</span>&gt;<span class="at_rule">@<span class="keyword">color/color_primary&lt;/item&gt;</span></span><br><span class="line">        &lt;item name=<span class="string">"android:colorPrimaryDark"</span>&gt;@color/color_primary_dark&lt;/item&gt;</span><br><span class="line">        &lt;item name=<span class="string">"android:colorAccent"</span>&gt;@color/color_accent&lt;/item&gt;</span><br><span class="line">    </span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用Toolbar代替ActionBar">使用Toolbar代替ActionBar</h3><ol>
+<li>使用<strong>Theme.AppCompat.NoActionBar</strong>或者<strong>Theme.AppCompat.Light.NoActionBar</strong>将系统的ActonBar隐藏</li>
+<li>定义一个<strong>app_bar.xml</strong>的布局文件，里面包含一个<strong>ToolBar</strong>控件</li>
+<li>使用<strong><include></include></strong>在你的layout中添加Toolbar</li>
+<li>Activity中使用<strong>findViewById</strong>实例化Toolbar</li>
+<li>使用<strong>setSupportActionBar()</strong>引入实例化的Toolbar</li>
+<li>自定义<strong>app:theme</strong>和<strong>app:popupTheme</strong>，如果有需要的话</li>
+<li>自定义其他特性，直接使用Toobar的实例或者使用<strong>getSupportActionBar()</strong></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- layout/app_bar.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">    <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span></span><br><span class="line">    <span class="attribute">app:popupTheme</span>=<span class="value">"@style/ThemeOverlay.AppCompat.Light"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.v7.widget.Toolbar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- activity_main.xml --&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    xmlns:tools="http://schemas.android.com/tools"</span><br><span class="line">    android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"</span><br><span class="line">    tools:context=".MainActivity"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include</span><br><span class="line">        layout="@layout/app_bar"</span><br><span class="line">        android:id="@+id/app_bar" /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="match_parent"</span><br><span class="line">        android:background="#fff"</span><br><span class="line">        android:layout_below="@id/app_bar"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>在<strong>onCreate</strong>方法中实例化<strong>Toolbar</strong>对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Toolbar toolbar;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        toolbar = (Toolbar) findViewById(R.id.app_bar);</span><br><span class="line">        setSupportActionBar(toolbar);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>看看效果:</p>
+<p><img src="http://treizeor.qiniudn.com/img/material_design_toolbar_1.png" alt=""></p>
+<h3 id="使用Navigation_Drawer侧滑菜单">使用Navigation Drawer侧滑菜单</h3><ol>
+<li>使用<strong>DrawerLayout</strong>包含两个子布局，一个是你的内容主布局，一个是侧边布局</li>
+<li>在代码中初始化<strong>DrawerLayout</strong></li>
+<li>创建一个<strong>ActionBarDrawerToggle</strong>的实例，并指定Activity、DrawerLayout、Toolbar、Open和Close的字符串值</li>
+<li>使用<strong>ActionBarDrawerToggle</strong>的<strong>syncState()</strong>方法同步汉堡菜单</li>
+</ol>
+<p>创建一个空的Fragment<code>NavigationDrawerFragment</code>作为侧边栏的布局，修改主布局文件，使用DrawerLayout包含两个子布局:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- activity_main.xml --&gt;</span><br><span class="line">&lt;android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    xmlns:tools="http://schems.android.com/tools"</span><br><span class="line">    xmlns:app="http://schemas.android.com/apk/res-auto"</span><br><span class="line">    android:id="@+id/drawer_layout"</span><br><span class="line">    android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;RelativeLayout</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="match_parent"</span><br><span class="line">        tools:context=".MainActivity"&gt;</span><br><span class="line"></span><br><span class="line">        &lt;include</span><br><span class="line">            layout="@layout/app_bar"</span><br><span class="line">            android:id="@+id/app_bar" /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;FrameLayout</span><br><span class="line">            android:layout_width="match_parent"</span><br><span class="line">            android:layout_height="match_parent"</span><br><span class="line">            android:background="#fff"</span><br><span class="line">            android:layout_below="@id/app_bar"&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/FrameLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/RelativeLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id="@+id/fragment_navigation_drawer"</span><br><span class="line">        android:layout_width="280dp"</span><br><span class="line">        android:layout_gravity="start"</span><br><span class="line">        android:layout_height="match_parent"</span><br><span class="line">        app:layout="@layout/fragment_navigation_drawer"</span><br><span class="line">        tools:layout="@layout/fragment_navigation_drawer"</span><br><span class="line">        android:name="cn.treize.formaterialtest.NavigationDrawerFragment" /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.v4.widget.DrawerLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>在<strong>MainActivity.java</strong>中:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    toolbar = (Toolbar) findViewById(R.id.app_bar);</span><br><span class="line">    setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">    NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)</span><br><span class="line">            getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);</span><br><span class="line">    drawerFragment.setUp((DrawerLayout)findViewById(R.id.drawer_layout), toolbar);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改<strong>NavigationDrawerFragment.java</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.treize.formaterialtest;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.widget.DrawerLayout;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.ActionBarDrawerToggle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.Toolbar;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A simple &#123;<span class="doctag">@link</span> Fragment&#125; subclass.</span><br><span class="line"> * 注意import的是v4里面的Fragment</span><br><span class="line"> * import android.support.v4.app.Fragment;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NavigationDrawerFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ActionBarDrawerToggle mDrawerToggle;</span><br><span class="line">    <span class="keyword">private</span> DrawerLayout mDrawerLayout;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NavigationDrawerFragment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Required empty public constructor</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span><br><span class="line">                             Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Inflate the layout for this fragment</span></span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment_navigation_drawer, container, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">(DrawerLayout drawerlayout, Toolbar toolbar)</span> </span>&#123;</span><br><span class="line">        mDrawerLayout = drawerlayout;</span><br><span class="line">        mDrawerToggle = <span class="keyword">new</span> ActionBarDrawerToggle(getActivity(),</span><br><span class="line">                drawerlayout,toolbar,R.string.drawer_open,R.string.drawer_close)&#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawerOpened</span><span class="params">(View drawerView)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onDrawerOpened(drawerView);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawerClosed</span><span class="params">(View drawerView)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onDrawerClosed(drawerView);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        mDrawerLayout.setDrawerListener(mDrawerToggle);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// syncState同步汉堡菜单</span></span><br><span class="line">        drawerlayout.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                mDrawerToggle.syncState();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NavigationDrawerFragment的布局文件，这里只是个空的示例:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- fragment_navigation_drawer.xml --&gt;</span><br><span class="line">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"</span><br><span class="line">    android:background="#CCC"</span><br><span class="line">    tools:context="cn.treize.formaterialtest.NavigationDrawerFragment"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- TODO: Update blank fragment layout --&gt;</span><br><span class="line">    &lt;TextView android:layout_width="match_parent" android:layout_height="match_parent"</span><br><span class="line">        android:text="@string/hello_blank_fragment" /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/FrameLayout&gt;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p><code>strings.xml</code>中定义<strong>ActonBarDrawerToggle</strong>的Open和Close字符值:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">string</span> <span class="attribute">name</span>=<span class="value">"drawer_open"</span>&gt;</span>Open<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">string</span> <span class="attribute">name</span>=<span class="value">"drawer_close"</span>&gt;</span>Close<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>看看效果:</p>
+<p><img src="http://treizeor.qiniudn.com/img/material_design_drawerlayout_1.png" alt=""></p>
+<p>可以看到侧滑菜单遮住了Toolbar，如果我想要另一种效果呢，也就是侧滑菜单在Toolbar下面。方法很简单，把Toobar的layout和drawerlayout放到同级布局文件里面即可。下面创建一个新的布局：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- activity_main_appbar.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">include</span></span><br><span class="line">        <span class="attribute">layout</span>=<span class="value">"@layout/app_bar"</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/app_bar"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v4.widget.DrawerLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/drawer_layout"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">RelativeLayout</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">FrameLayout</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"#fff"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;/<span class="title">FrameLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">fragment</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/fragment_navigation_drawer"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"280dp"</span></span><br><span class="line">            <span class="attribute">android:layout_gravity</span>=<span class="value">"start"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">app:layout</span>=<span class="value">"@layout/fragment_navigation_drawer"</span></span><br><span class="line">            <span class="attribute">tools:layout</span>=<span class="value">"@layout/fragment_navigation_drawer"</span></span><br><span class="line">            <span class="attribute">android:name</span>=<span class="value">"cn.treize.formaterialtest.NavigationDrawerFragment"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.v4.widget.DrawerLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在MainActivity中引用该布局，看看效果:</p>
+<p><img src="http://treizeor.qiniudn.com/img/material_design_drawerlayout_2.png" alt=""></p>
+<p>我们看到有些应用在侧边栏展开的时候，Toobar会逐渐变暗，这个效果只需要在ActonBarDrawerToggle实例中实现该方法就行了:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawerSlide</span><span class="params">(View drawerView, <span class="keyword">float</span> slideOffset)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">super</span>.onDrawerSlide(drawerView, slideOffset);</span><br><span class="line">               <span class="keyword">if</span> (slideOffset &lt; <span class="number">0.6</span>) &#123;</span><br><span class="line">                   toolbar.setAlpha(<span class="number">1</span> - slideOffset);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+<p>效果也是杠杠的：</p>
+<p><img src="http://treizeor.qiniudn.com/img/material_design_drawerlayout_3.png" alt=""></p>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/learning/">learning</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/android/">android</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="Material实践Toolbar和DrawerLayout的使用">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'mindofme' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

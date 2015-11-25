@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>RecyclerView和CardView使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。
+CardView则是Google提供的一个卡片式视图组件
+这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。
+布局为了使用RecyclerView和CardView">
+  
+  <meta name="description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。
+CardView则是Google提供的一个卡片式视图组件
+这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。
+布局为了使用RecyclerView和CardView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecyclerView和CardView使用">
+<meta property="og:url" content="http://yoursite.com/2015/01/08/recyclerview-and-cardview/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。
+CardView则是Google提供的一个卡片式视图组件
+这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。
+布局为了使用RecyclerView和CardView">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/recyclerview_cardview.png">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/recyclerview_onitemclick.png">
+<meta property="og:updated_time" content="2015-11-25T15:48:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RecyclerView和CardView使用">
+<meta name="twitter:description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。
+CardView则是Google提供的一个卡片式视图组件
+这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。
+布局为了使用RecyclerView和CardView">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Hexo</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/01/08/recyclerview-and-cardview/">
+  <time datetime="2015-01-08T07:00:00.000Z">
+    2015-01-08
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">RecyclerView和CardView使用</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="介绍">介绍</h3><p><strong>RecyclerView</strong>是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。</p>
+<p><strong>CardView</strong>则是Google提供的一个卡片式视图组件</p>
+<p>这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。</p>
+<h3 id="布局">布局</h3><p>为了使用RecyclerView和CardView，需要导入support-v7中的两个包。在Android Studio上面很容易。</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:recyclerview-v7:21.0.3'</span></span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:cardview-v7:21.0.3'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RecyclerView和ListView非常类似，我们可以用同样的方式放入布局里面。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- activity_main.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">RelativeLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v7.widget.RecyclerView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/cardList"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是一个卡片布局，包含了几个TextView用来展示用户资料</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span> <span class="comment">&lt;!-- card_item.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.v7.widget.CardView</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:id</span>=<span class="value">"@+id/card_view"</span></span><br><span class="line">    <span class="attribute">card_view:cardCornerRadius</span>=<span class="value">"4dp"</span></span><br><span class="line">    <span class="attribute">android:layout_margin</span>=<span class="value">"5dp"</span></span><br><span class="line">    <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:card_view</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">RelativeLayout</span> <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/title"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"20dp"</span></span><br><span class="line">            <span class="attribute">android:background</span>=<span class="value">"@color/bkg_card"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"contact det"</span></span><br><span class="line">            <span class="attribute">android:gravity</span>=<span class="value">"center_vertical"</span></span><br><span class="line">            <span class="attribute">android:textColor</span>=<span class="value">"@android:color/white"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"14dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/txtName"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"Name"</span></span><br><span class="line">            <span class="attribute">android:gravity</span>=<span class="value">"center_vertical"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_below</span>=<span class="value">"@id/title"</span></span><br><span class="line">            <span class="attribute">android:layout_marginTop</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_marginLeft</span>=<span class="value">"5dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/txtSurname"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"Surname"</span></span><br><span class="line">            <span class="attribute">android:gravity</span>=<span class="value">"center_vertical"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_below</span>=<span class="value">"@id/txtName"</span></span><br><span class="line">            <span class="attribute">android:layout_marginTop</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_marginLeft</span>=<span class="value">"5dp"</span></span><br><span class="line">            /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/txtEmail"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"Email"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_marginTop</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_alignParentRight</span>=<span class="value">"true"</span></span><br><span class="line">            <span class="attribute">android:layout_marginRight</span>=<span class="value">"150dp"</span></span><br><span class="line">            <span class="attribute">android:layout_alignBaseline</span>=<span class="value">"@id/txtName"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/txtAdd"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"Address"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"10dp"</span></span><br><span class="line">            <span class="attribute">android:layout_alignStart</span>=<span class="value">"@id/txtEmail"</span></span><br><span class="line">            <span class="attribute">android:layout_alignBaseline</span>=<span class="value">"@id/txtSurname"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.v7.widget.CardView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="代码">代码</h3><p>我们先来建个联系人类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.treize.recyclerviewandcardview;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by treize on 15-1-7.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactInfo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="keyword">protected</span> String surname;</span><br><span class="line">    <span class="keyword">protected</span> String email;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME_PREFIX = <span class="string">"Name_"</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> String SURNAME_PREFIX = <span class="string">"Surname_"</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> String EMAIL_PREFIX = <span class="string">"Email_"</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义的RecyclerView.Adapter</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.treize.recyclerviewandcardview;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.RecyclerView;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by treize on 15-1-7.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">ContactAdapter</span>.<span class="title">ContactViewHolder</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;ContactInfo&gt; contactList;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContactAdapter</span><span class="params">(List&lt;ContactInfo&gt; contactList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.contactList = contactList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ContactViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        View itemView = LayoutInflater.from(parent.getContext())</span><br><span class="line">                .inflate(R.layout.card_item, parent ,<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ContactViewHolder(itemView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(ContactViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        ContactInfo ci = contactList.get(position);</span><br><span class="line">        holder.vName.setText(ci.name);</span><br><span class="line">        holder.vEmail.setText(ci.email);</span><br><span class="line">        holder.vSurname.setText(ci.surname);</span><br><span class="line">        holder.vTitle.setText(ci.name + <span class="string">" "</span> + ci.surname);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> contactList.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重写自定义的ViewHolder</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> TextView vName;</span><br><span class="line">        <span class="keyword">protected</span> TextView vSurname;</span><br><span class="line">        <span class="keyword">protected</span> TextView vEmail;</span><br><span class="line">        <span class="keyword">protected</span> TextView vTitle;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ContactViewHolder</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(v);</span><br><span class="line">            vName = (TextView) v.findViewById(R.id.txtName);</span><br><span class="line">            vSurname = (TextView) v.findViewById(R.id.txtSurname);</span><br><span class="line">            vEmail = (TextView) v.findViewById(R.id.txtEmail);</span><br><span class="line">            vTitle = (TextView) v.findViewById(R.id.title);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MainAcitvity.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.treize.recyclerviewandcardview;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.ActionBarActivity;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.LinearLayoutManager;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.RecyclerView;</span><br><span class="line"><span class="keyword">import</span> android.view.Menu;</span><br><span class="line"><span class="keyword">import</span> android.view.MenuItem;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ActionBarActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);</span><br><span class="line">        recyclerView.setHasFixedSize(<span class="keyword">true</span>);</span><br><span class="line">        LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</span><br><span class="line">        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);</span><br><span class="line">        recyclerView.setLayoutManager(layoutManager);</span><br><span class="line"></span><br><span class="line">        ContactAdapter adapter = <span class="keyword">new</span> ContactAdapter(createList(<span class="number">30</span>));</span><br><span class="line">        recyclerView.setAdapter(adapter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Inflate the menu; this adds items to the action bar if it is present.</span></span><br><span class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Handle action bar item clicks here. The action bar will</span></span><br><span class="line">        <span class="comment">// automatically handle clicks on the Home/Up button, so long</span></span><br><span class="line">        <span class="comment">// as you specify a parent activity in AndroidManifest.xml.</span></span><br><span class="line">        <span class="keyword">int</span> id = item.getItemId();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//noinspection SimplifiableIfStatement</span></span><br><span class="line">        <span class="keyword">if</span> (id == R.id.action_settings) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;ContactInfo&gt; <span class="title">createList</span><span class="params">(<span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">        List&lt;ContactInfo&gt; contactList = <span class="keyword">new</span> ArrayList&lt;ContactInfo&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;= size; i++)&#123;</span><br><span class="line">            ContactInfo ci = <span class="keyword">new</span> ContactInfo();</span><br><span class="line">            ci.name = ContactInfo.NAME_PREFIX + i;</span><br><span class="line">            ci.surname = ContactInfo.SURNAME_PREFIX +i;</span><br><span class="line">            ci.email = ContactInfo.EMAIL_PREFIX +i;</span><br><span class="line"></span><br><span class="line">            contactList.add(ci);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> contactList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下</p>
+<p><img src="http://treizeor.qiniudn.com/img/recyclerview_cardview.png" alt=""></p>
+<h3 id="OnItemClick方法">OnItemClick方法</h3><p>我们发现RecyclerView没有OnItemClick之类的方法。那怎么实现呢，有很多种方法。这里用的是来说<a href="http://stackoverflow.com/questions/24471109/recyclerview-onclick" target="_blank" rel="external"><strong>StackOverFlow</strong></a>的一个方法，看别人的回复说有延迟，但是我在模拟器中使用没发现。</p>
+<p>他的使用方法很简单：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">RecyclerView recyclerView = findViewById(R.id.recycler);</span><br><span class="line">recyclerView.addOnItemTouchListener(<span class="keyword">new</span> RecyclerItemClickListener(getApplicationContext(),<span class="keyword">new</span> RecyclerItemClickListener.OnItemClickListener()&#123;</span><br><span class="line"></span><br><span class="line">          <span class="annotation">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(View view, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">              ((TextView)view.findViewById(R.id.title)).setText(<span class="string">"onClick~~~~~~~~~~~~~~~"</span>);</span><br><span class="line">              Toast.makeText(getApplicationContext(),<span class="string">"this is "</span> + (position+<span class="number">1</span>) +<span class="string">" item"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;));</span><br></pre></td></tr></table></figure>
+<p>RecyclerItemClickListener的实现:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.treize.recyclerviewandcardview;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.RecyclerView;</span><br><span class="line"><span class="keyword">import</span> android.view.GestureDetector;</span><br><span class="line"><span class="keyword">import</span> android.view.MotionEvent;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by treize on 15-1-9.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerItemClickListener</span> <span class="keyword">implements</span> <span class="title">RecyclerView</span>.<span class="title">OnItemTouchListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> OnItemClickListener mListener;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnItemClickListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(View view, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    GestureDetector mGestureDetector;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerItemClickListener</span><span class="params">(Context context, OnItemClickListener mListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mListener = mListener;</span><br><span class="line">        mGestureDetector = <span class="keyword">new</span> GestureDetector(context, <span class="keyword">new</span> GestureDetector.SimpleOnGestureListener()&#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onSingleTapUp</span><span class="params">(MotionEvent e)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(RecyclerView rv, MotionEvent e)</span> </span>&#123;</span><br><span class="line">        View childView = rv.findChildViewUnder(e.getX(), e.getY());</span><br><span class="line">        <span class="keyword">if</span> (childView != <span class="keyword">null</span> &amp;&amp; mListener !=<span class="keyword">null</span> &amp;&amp; mGestureDetector.onTouchEvent(e)) &#123;</span><br><span class="line">            mListener.onItemClick(childView,rv.getChildPosition(childView));</span><br><span class="line">            <span class="keyword">return</span>  <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTouchEvent</span><span class="params">(RecyclerView rv, MotionEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<p><img src="http://treizeor.qiniudn.com/img/recyclerview_onitemclick.png" alt=""></p>
+<p>本文中的代码可以在<a href="https://github.com/treizeor/material_test_project/tree/master/RecyclerViewAndCardView" target="_blank" rel="external"><strong>GitHub</strong></a>中找到。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/learning/">learning</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/android/">android</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="RecyclerView和CardView使用">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'mindofme' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
