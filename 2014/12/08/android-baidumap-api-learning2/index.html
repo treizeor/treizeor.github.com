@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>Android百度地图SDK图层 | Simplism Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="准备工作其实也没什么需要准备的，无非下载SDK和申请KEY.话说，百度的SDK开发指南虽然没有详细到每行代码都打出来，不过也足够详细了。所以想了解细节的话还是去看开发指南好点。这里只是简单记录下学习的过程。 代码清单AndroidManifest.xml 声明权限 1234567891011121314&amp;lt;uses-permission android:name=&quot;android.permis">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android百度地图SDK图层">
+<meta property="og:url" content="http://simplism.life/2014/12/08/android-baidumap-api-learning2/index.html">
+<meta property="og:site_name" content="Simplism Life">
+<meta property="og:description" content="准备工作其实也没什么需要准备的，无非下载SDK和申请KEY.话说，百度的SDK开发指南虽然没有详细到每行代码都打出来，不过也足够详细了。所以想了解细节的话还是去看开发指南好点。这里只是简单记录下学习的过程。 代码清单AndroidManifest.xml 声明权限 1234567891011121314&amp;lt;uses-permission android:name=&quot;android.permis">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/Screenshot_2014-12-08-17-39-26.png?imageMogr2/thumbnail/!50p">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/Screenshot_2014-12-08-17-40-11.png?imageMogr2/thumbnail/!50p">
+<meta property="og:updated_time" content="2017-04-29T05:59:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android百度地图SDK图层">
+<meta name="twitter:description" content="准备工作其实也没什么需要准备的，无非下载SDK和申请KEY.话说，百度的SDK开发指南虽然没有详细到每行代码都打出来，不过也足够详细了。所以想了解细节的话还是去看开发指南好点。这里只是简单记录下学习的过程。 代码清单AndroidManifest.xml 声明权限 1234567891011121314&amp;lt;uses-permission android:name=&quot;android.permis">
+<meta name="twitter:image" content="http://treizeor.qiniudn.com/img/Screenshot_2014-12-08-17-39-26.png?imageMogr2/thumbnail/!50p">
+  
+    <link rel="alternative" href="/atom.xml" title="Simplism Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+  
+
+</head>
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Simplism Life</a>
+        </h1>
+      
+    </div>
+    <!-- <div id="contenedor" >
+      <ul class="cube">
+        <li class="cara">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="100" viewBox="-50 -50 200 200">
+          <circle cx="50" cy="50" r="45" stroke-width="5" stroke="black" stroke-opacity="0.5" fill-opacity="0"></circle>
+          <rect x="47.5" y="27.5" width="5" height="25" rx="2.5" ry="2.5" fill="black" fill-opacity="0.5" transform="rotate(330 50 50)"></rect>
+          <rect x="48.5" y="16.5" width="3" height="35" rx="1.5" ry="1.5" fill="black" fill-opacity="0.5"></rect>
+          </svg>
+        </li>
+        <li class="cara">H</li>
+        <li class="cara">E</li>
+        <li class="cara">X</li>
+        <li class="cara">O</li>
+        <li class="cara">M</li>
+      </ul>
+    </div> -->
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-android-baidumap-api-learning2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2014/12/08/android-baidumap-api-learning2/" class="article-date">
+  <time datetime="2014-12-08T07:00:00.000Z" itemprop="datePublished">2014-12-08</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android百度地图SDK图层
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>其实也没什么需要准备的，无非下载<a href="http://developer.baidu.com/map/index.php?title=androidsdk/sdkandev-download" target="_blank" rel="noopener"><strong>SDK</strong></a>和申请<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="noopener"><strong>KEY</strong></a>.话说，百度的SDK<a href="http://developer.baidu.com/map/index.php?title=androidsdk/guide/introduction" target="_blank" rel="noopener"><strong>开发指南</strong></a>虽然没有详细到每行代码都打出来，不过也足够详细了。所以想了解细节的话还是去看开发指南好点。这里只是简单记录下学习的过程。</p>
+<h3 id="代码清单"><a href="#代码清单" class="headerlink" title="代码清单"></a>代码清单</h3><p>AndroidManifest.xml</p>
+<p>声明权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.GET_ACCOUNTS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.USE_CREDENTIALS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.MANAGE_ACCOUNTS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.AUTHENTICATE_ACCOUNTS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"com.android.launcher.permission.READ_SETTINGS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CHANGE_WIFI_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BROADCAST_STICKY"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_SETTINGS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在<code>application</code>标签中设置AccessKey</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">"com.baidu.lbsapi.API_KEY"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:value</span>=<span class="string">"key"</span> /&gt;</span> </span><br><span class="line">            <span class="comment">&lt;!-- key:开发者申请的key,即准备工作中的密钥ak --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>菜单menu.xml</p>
+<p>为了方便，我把各种功能的实现都放到了菜单里</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"com.example.baidumaptest.MainActivity"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/map_type_satellite"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"卫星地图"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/set_traffic_enable"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"交通图"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/set_baiduheatmap_enable"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"百度城市热力图"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/set_self_heatmap"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"构建自有热力图"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/polygon_options"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"几何图形覆盖物"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/text_options"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"文字覆盖物"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/pop_options"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"弹出窗覆盖物"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/groud_overlay"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"地形图图层"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/baidumap_clear"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"清除标注及覆盖物"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@drawable/icon_marka"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:showAsAction</span>=<span class="string">"always"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"标注覆盖物"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menu</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/marker_clear"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:title</span>=<span class="string">"清除标注"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/marker_reset"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:title</span>=<span class="string">"重置标注"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>MainActivity.java</p>
+<p>主要还是在各种图层和覆盖物的应用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.baidumaptest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.Menu;</span><br><span class="line"><span class="keyword">import</span> android.view.MenuItem;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.SDKInitializer;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.BaiduMap;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.BitmapDescriptor;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.BitmapDescriptorFactory;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.Gradient;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.GroundOverlayOptions;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.HeatMap;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.InfoWindow;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.MapView;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.Marker;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.MarkerOptions;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.OverlayOptions;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.PolygonOptions;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.Stroke;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.map.TextOptions;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.model.LatLng;</span><br><span class="line"><span class="keyword">import</span> com.baidu.mapapi.model.LatLngBounds;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	MapView mMapView = <span class="keyword">null</span>;</span><br><span class="line">	BaiduMap mBaiduMap = <span class="keyword">null</span>;</span><br><span class="line">	Marker marker;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">		<span class="comment">// 在使用SDK各组件前初始化context信息，需要在setContentView前实现</span></span><br><span class="line">		SDKInitializer.initialize(getApplicationContext());</span><br><span class="line">		setContentView(R.layout.activity_main);</span><br><span class="line">		mMapView = (MapView) findViewById(R.id.bmapView);</span><br><span class="line">		mBaiduMap = mMapView.getMap();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">super</span>.onDestroy();</span><br><span class="line">		mMapView.onDestroy();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onPause();</span><br><span class="line">		mMapView.onPause();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onResume();</span><br><span class="line">		mMapView.onResume();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Inflate the menu; this adds items to the action bar if it is present.</span></span><br><span class="line">		getMenuInflater().inflate(R.menu.main, menu);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">		<span class="keyword">case</span> R.id.map_type_satellite:</span><br><span class="line">			<span class="comment">// 卫星地图</span></span><br><span class="line">			mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.set_traffic_enable:</span><br><span class="line">			<span class="comment">// 交通图</span></span><br><span class="line">			mBaiduMap.setTrafficEnabled(<span class="keyword">true</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.set_baiduheatmap_enable:</span><br><span class="line">			<span class="comment">// 百度城市热力图</span></span><br><span class="line">			mBaiduMap.setBaiduHeatMapEnabled(<span class="keyword">true</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.marker_reset:</span><br><span class="line">			<span class="keyword">if</span> (marker != <span class="keyword">null</span>) &#123;</span><br><span class="line">				marker.remove();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 定义Marker坐标点</span></span><br><span class="line">			LatLng point = <span class="keyword">new</span> LatLng(<span class="number">39.963175</span>, <span class="number">116.400244</span>);</span><br><span class="line">			<span class="comment">// 构建Marker图标</span></span><br><span class="line">			BitmapDescriptor bitmap = BitmapDescriptorFactory</span><br><span class="line">					.fromResource(R.drawable.icon_marka);</span><br><span class="line">			<span class="comment">// 构建MarkerOption，用于在地图上添加Marker</span></span><br><span class="line">			OverlayOptions option = <span class="keyword">new</span> MarkerOptions().position(point) <span class="comment">// 设置marker位置</span></span><br><span class="line">					.icon(bitmap) <span class="comment">// 设置marker图标</span></span><br><span class="line">					.zIndex(<span class="number">9</span>) <span class="comment">// 设置marker所在层级</span></span><br><span class="line">					.draggable(<span class="keyword">true</span>); <span class="comment">// 设置可手势拖拽</span></span><br><span class="line">			<span class="comment">// 在地图上添加Marker,并显示</span></span><br><span class="line">			marker = (Marker) mBaiduMap.addOverlay(option);</span><br><span class="line"></span><br><span class="line">			mBaiduMap</span><br><span class="line">					.setOnMarkerClickListener(<span class="keyword">new</span> BaiduMap.OnMarkerClickListener() &#123;</span><br><span class="line"></span><br><span class="line">						<span class="meta">@Override</span></span><br><span class="line">						<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMarkerClick</span><span class="params">(Marker marker)</span> </span>&#123;</span><br><span class="line">							showPopOptions(marker.getPosition());</span><br><span class="line">							<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 调用BaiduMap对象的setOnMarkerDragListener方法设置marker拖拽到监听</span></span><br><span class="line">			mBaiduMap</span><br><span class="line">					.setOnMarkerDragListener(<span class="keyword">new</span> BaiduMap.OnMarkerDragListener() &#123;</span><br><span class="line"></span><br><span class="line">						<span class="meta">@Override</span></span><br><span class="line">						<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMarkerDragStart</span><span class="params">(Marker marker)</span> </span>&#123;</span><br><span class="line">							<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">							System.out.println(<span class="string">"--拖拽开始--"</span>);</span><br><span class="line">							Toast.makeText(getApplicationContext(), <span class="string">"拖拽开始"</span>,</span><br><span class="line">									Toast.LENGTH_LONG).show();</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">						<span class="meta">@Override</span></span><br><span class="line">						<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMarkerDragEnd</span><span class="params">(Marker marker)</span> </span>&#123;</span><br><span class="line">							<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">							System.out.println(<span class="string">"--拖拽结束--"</span>);</span><br><span class="line"></span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">						<span class="meta">@Override</span></span><br><span class="line">						<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMarkerDrag</span><span class="params">(Marker marker)</span> </span>&#123;</span><br><span class="line">							<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">							System.out.println(<span class="string">"--拖拽中--"</span>);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.marker_clear:</span><br><span class="line">			<span class="comment">// 移除标注物</span></span><br><span class="line">			marker.remove();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.polygon_options:</span><br><span class="line">			<span class="comment">// 定义多边形的五个顶点</span></span><br><span class="line">			LatLng pt1 = <span class="keyword">new</span> LatLng(<span class="number">39.93923</span>, <span class="number">116.357428</span>);</span><br><span class="line">			LatLng pt2 = <span class="keyword">new</span> LatLng(<span class="number">39.91923</span>, <span class="number">116.327428</span>);</span><br><span class="line">			LatLng pt3 = <span class="keyword">new</span> LatLng(<span class="number">39.89923</span>, <span class="number">116.347428</span>);</span><br><span class="line">			LatLng pt4 = <span class="keyword">new</span> LatLng(<span class="number">39.89923</span>, <span class="number">116.367428</span>);</span><br><span class="line">			LatLng pt5 = <span class="keyword">new</span> LatLng(<span class="number">39.91923</span>, <span class="number">116.387428</span>);</span><br><span class="line">			List&lt;LatLng&gt; pts = <span class="keyword">new</span> ArrayList&lt;LatLng&gt;();</span><br><span class="line">			pts.add(pt1);</span><br><span class="line">			pts.add(pt2);</span><br><span class="line">			pts.add(pt3);</span><br><span class="line">			pts.add(pt4);</span><br><span class="line">			pts.add(pt5);</span><br><span class="line">			<span class="comment">// 构建多边形的option对象</span></span><br><span class="line">			OverlayOptions polygonOptions = <span class="keyword">new</span> PolygonOptions().points(pts)</span><br><span class="line">					.stroke(<span class="keyword">new</span> Stroke(<span class="number">5</span>, <span class="number">0xAA00FF00</span>)).fillColor(<span class="number">0xAAFF0000</span>);</span><br><span class="line">			<span class="comment">// 在地图上显示多边形</span></span><br><span class="line">			mBaiduMap.addOverlay(polygonOptions);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.text_options:</span><br><span class="line">			LatLng textLatLng = <span class="keyword">new</span> LatLng(<span class="number">39.86923</span>, <span class="number">116.397428</span>);</span><br><span class="line">			OverlayOptions textOptions = <span class="keyword">new</span> TextOptions().bgColor(<span class="number">0xAAFFFF00</span>)</span><br><span class="line">					.text(<span class="string">"TREIZE到此一游"</span>).fontColor(<span class="number">0xFFFF0000</span>).fontSize(<span class="number">30</span>)</span><br><span class="line">					.position(textLatLng).rotate(-<span class="number">45</span>); <span class="comment">// 45度的忧桑:)</span></span><br><span class="line">			mBaiduMap.addOverlay(textOptions);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.pop_options:</span><br><span class="line">			<span class="comment">// 定义用于显示该InfoWindow的坐标点</span></span><br><span class="line">			LatLng pt = <span class="keyword">new</span> LatLng(<span class="number">39.86923</span>, <span class="number">116.397428</span>);</span><br><span class="line">			showPopOptions(pt);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.groud_overlay:</span><br><span class="line">			<span class="comment">// 定义Ground的显示地理范围</span></span><br><span class="line">			LatLng southwest = <span class="keyword">new</span> LatLng(<span class="number">39.92235</span>, <span class="number">116.380338</span>);</span><br><span class="line">			LatLng northeast = <span class="keyword">new</span> LatLng(<span class="number">39.947246</span>, <span class="number">116.414977</span>);</span><br><span class="line">			LatLngBounds bounds = <span class="keyword">new</span> LatLngBounds.Builder().include(northeast)</span><br><span class="line">					.include(southwest).build();</span><br><span class="line">			<span class="comment">// 定义Ground显示的图片</span></span><br><span class="line">			BitmapDescriptor overlay = BitmapDescriptorFactory</span><br><span class="line">					.fromResource(R.drawable.ground_overlay);</span><br><span class="line">			OverlayOptions overlayOptions = <span class="keyword">new</span> GroundOverlayOptions()</span><br><span class="line">					.positionFromBounds(bounds).image(overlay)</span><br><span class="line">					.transparency(<span class="number">0.8f</span>);</span><br><span class="line">			mBaiduMap.addOverlay(overlayOptions);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> R.id.baidumap_clear:</span><br><span class="line">			mBaiduMap.clear();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 构建自有热力图</span></span><br><span class="line">		<span class="keyword">case</span> R.id.set_self_heatmap:</span><br><span class="line">			<span class="comment">// 设置渐变颜色值</span></span><br><span class="line">			<span class="keyword">int</span>[] DEFAULT_GRADIENT_COLORS = &#123; Color.rgb(<span class="number">102</span>, <span class="number">225</span>, <span class="number">0</span>),</span><br><span class="line">					Color.rgb(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>) &#125;;</span><br><span class="line">			<span class="comment">// 设置渐变颜色起始值</span></span><br><span class="line">			<span class="keyword">float</span>[] DEFAULT_GRADIENT_START_POINTS = &#123; <span class="number">0.2f</span>, <span class="number">1f</span> &#125;;</span><br><span class="line">			<span class="comment">// 构造颜色渐变对象</span></span><br><span class="line">			Gradient gradient = <span class="keyword">new</span> Gradient(DEFAULT_GRADIENT_COLORS,</span><br><span class="line">					DEFAULT_GRADIENT_START_POINTS);</span><br><span class="line">			<span class="comment">// 准备数据</span></span><br><span class="line">			<span class="comment">// 以下数据为随机生成地理位置点，开发者根据自己的实际业务，传入自有位置数据即可</span></span><br><span class="line">			List&lt;LatLng&gt; randomLatLngs = <span class="keyword">new</span> ArrayList&lt;LatLng&gt;();</span><br><span class="line">			Random random = <span class="keyword">new</span> Random();</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">500</span>; i++) &#123;</span><br><span class="line">				<span class="keyword">int</span> rlat = random.nextInt(<span class="number">370000</span>);</span><br><span class="line">				<span class="keyword">int</span> rlng = random.nextInt(<span class="number">370000</span>);</span><br><span class="line">				<span class="keyword">int</span> lat = <span class="number">39780000</span> + rlat;</span><br><span class="line">				<span class="keyword">int</span> lng = <span class="number">116220000</span> + rlng;</span><br><span class="line">				LatLng latLng = <span class="keyword">new</span> LatLng(lat / <span class="number">1E6</span>, lng / <span class="number">1E6</span>);</span><br><span class="line">				randomLatLngs.add(latLng);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 添加、显示热力图</span></span><br><span class="line">			HeatMap heatMap = <span class="keyword">new</span> HeatMap.Builder().data(randomLatLngs)</span><br><span class="line">					.gradient(gradient).build();</span><br><span class="line">			mBaiduMap.addHeatMap(heatMap);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopOptions</span><span class="params">(LatLng pt)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 创建InfoWindow展示的View</span></span><br><span class="line">		Button button = <span class="keyword">new</span> Button(getApplicationContext());</span><br><span class="line">		button.setText(<span class="string">"弹出窗"</span>);</span><br><span class="line">		button.setTextColor(<span class="number">0xFFFF0000</span>);</span><br><span class="line">		button.setBackgroundResource(R.drawable.popup);</span><br><span class="line">		<span class="comment">// 定义用于显示该InfoWindow的坐标点</span></span><br><span class="line">		<span class="comment">// LatLng pt = new LatLng(39.86923, 116.397428);</span></span><br><span class="line">		<span class="comment">// 创建InfoWindow，传入View，坐标，偏移量</span></span><br><span class="line">		InfoWindow mInfoWindow = <span class="keyword">new</span> InfoWindow(button, pt, -<span class="number">47</span>);</span><br><span class="line">		<span class="comment">// 显示InfoWindow</span></span><br><span class="line">		mBaiduMap.showInfoWindow(mInfoWindow);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://treizeor.qiniudn.com/img/Screenshot_2014-12-08-17-39-26.png?imageMogr2/thumbnail/!50p" alt="效果图1"><br><img src="http://treizeor.qiniudn.com/img/Screenshot_2014-12-08-17-40-11.png?imageMogr2/thumbnail/!50p" alt="效果图1"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2014/12/08/android-baidumap-api-learning2/" data-id="cjj5f7fy3000094r8mu34sx42" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2014/12/08/android-baidumap-api-learning2/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+    
+  <!-- css -->
+  <style type="text/css">
+      .center {
+          text-align: center;
+      }
+      .hidden {
+          display: none;
+      }
+    .donate_bar a.btn_donate{
+      display: inline-block;
+      width: 82px;
+      height: 82px;
+      background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+      _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+      <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+           因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+         为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+         嵌入其它博客时不一定要它们。 -->
+      -webkit-transition: background 0s;
+      -moz-transition: background 0s;
+      -o-transition: background 0s;
+      -ms-transition: background 0s;
+      transition: background 0s;
+      <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+    }
+
+    .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+    .donate_bar .donate_txt {
+      display: block;
+      color: #9d9d9d;
+      font: 14px/2 "Microsoft Yahei";
+    }
+    .bold{ font-weight: bold; }
+  </style>
+  <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+  <!-- btn_donate & tips -->
+  <div id="donate_board" class="donate_bar center">
+     <br>
+    <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+    <span class="donate_txt">
+      Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+    </span>
+      
+    
+  </div>
+  <!-- /btn_donate & tips -->
+
+  <!-- donate guide -->
+    
+  <div id="donate_guide" class="donate_bar center hidden">
+    <br>
+
+    <a href="/img/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+      <img src="/img/wechatpay.png" title="微信打赏" height="190px" width="auto"/>
+    </a>
+        
+        &nbsp;&nbsp;
+
+    <a href="/img/alipay.png" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+      <img src="/img/alipay.png" title="支付宝打赏" height="190px" width="auto"/>
+    </a>
+
+    <span class="donate_txt">
+      Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+    </span>
+
+  </div>
+  <!-- /donate guide -->
+
+  <!-- donate script -->
+  <script type="text/javascript">
+    document.getElementById('btn_donate').onclick = function() {
+      $('#donate_board').addClass('hidden');
+      $('#donate_guide').removeClass('hidden');
+    }
+
+    function donate_on_web(){
+      $('#donate').submit();
+        }
+
+    var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+    }
+  </script>
+  <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/03/create-floating-action-button-on-android/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android悬浮按钮Floating Action Button
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/07/baidumap-sdk-learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">百度地图SDK之定位功能</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2014/12/08/android-baidumap-api-learning2/" data-title="Android百度地图SDK图层" data-url="http://simplism.life/2014/12/08/android-baidumap-api-learning2/"></div>
+
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2155211"></script>
+  </section>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/13/机器学习笔记/">机器学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/13/什么是费曼技巧/">什么是费曼技巧？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/书非借不能读/">书非借不能读？书非图书馆不能读？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/雨夜，2018杂想/">雨夜，2018杂想</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/qml-listview-drag-to-oreder/">Qml实现ListView拖动排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt/">Qt</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberrypi/">raspberrypi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习技巧/">学习技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Uranus<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+	  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	  .
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次.</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
+
+
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+<!-- uyan start -->
+<script type="text/javascript">
+var uyanQuery = {short_name:"2155211"};
+  (function() {
+    var uy = document.createElement('script');
+    uy.type = 'text/javascript';uy.async = true;
+    uy.src = 'http://v2.uyan.cc/code/uyan.js?uid=2155211';
+    uy.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(uy);
+  })();
+  </script>
+<!-- uyan end -->
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

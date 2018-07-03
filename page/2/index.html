@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>Simplism Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Simplism Life">
+<meta property="og:url" content="http://simplism.life/page/2/index.html">
+<meta property="og:site_name" content="Simplism Life">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simplism Life">
+  
+    <link rel="alternative" href="/atom.xml" title="Simplism Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+  
+
+</head>
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Simplism Life</a>
+        </h1>
+      
+    </div>
+    <!-- <div id="contenedor" >
+      <ul class="cube">
+        <li class="cara">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="100" viewBox="-50 -50 200 200">
+          <circle cx="50" cy="50" r="45" stroke-width="5" stroke="black" stroke-opacity="0.5" fill-opacity="0"></circle>
+          <rect x="47.5" y="27.5" width="5" height="25" rx="2.5" ry="2.5" fill="black" fill-opacity="0.5" transform="rotate(330 50 50)"></rect>
+          <rect x="48.5" y="16.5" width="3" height="35" rx="1.5" ry="1.5" fill="black" fill-opacity="0.5"></rect>
+          </svg>
+        </li>
+        <li class="cara">H</li>
+        <li class="cara">E</li>
+        <li class="cara">X</li>
+        <li class="cara">O</li>
+        <li class="cara">M</li>
+      </ul>
+    </div> -->
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-building-data-driven-hierarchical-views" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2015/01/05/building-data-driven-hierarchical-views/" class="article-date">
+  <time datetime="2015-01-05T07:00:00.000Z" itemprop="datePublished">2015-01-05</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/05/building-data-driven-hierarchical-views/">建立数据驱动的分层视图(翻译)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>应用程序中有一种很常见的情况是由事件数据驱动UI的显示。本教程中将展示一个我几乎每天工作中都用到的非常有用的技术，这是此前一个非常有才华的工程师教给我的。用于建立多个自定义的视图并用于不同的布局，然后将数据更新到每个布局的一个容器视图里。本教程的所有代码都可以在<a href="https://github.com/PaulTR/AndroidDemoProjects/tree/master/EventDrivenHierarchicalViews" target="_blank" rel="noopener"><em>GitHub</em></a>上面找到。</p>
+<p>英文好且有梯子的请戳<a href="http://ptrprograms.blogspot.com/2014/12/building-data-driven-hierarchical-views.html" target="_blank" rel="noopener"><em>这里</em></a>看原文。</p>
+<p>在这个例子中我们要做的第一件事就是创建一个用于更新视图的接口。这个接口只有一个<code>update</code>方法，用于更新视图数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Updateable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">( Weather weather )</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/05/building-data-driven-hierarchical-views/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2015/01/05/building-data-driven-hierarchical-views/" data-id="cjj5f7fyj000594r877o926i7" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2015/01/05/building-data-driven-hierarchical-views/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-android-material-design-01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2015/01/04/android-material-design-01/" class="article-date">
+  <time datetime="2015-01-04T07:00:00.000Z" itemprop="datePublished">2015-01-04</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/04/android-material-design-01/">Material实践Toolbar和DrawerLayout的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="设置Theme及定义基本颜色"><a href="#设置Theme及定义基本颜色" class="headerlink" title="设置Theme及定义基本颜色"></a>设置Theme及定义基本颜色</h3><p>根据官方设计规范(<a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application" target="_blank" rel="noopener"><strong>Color</strong></a>)，定义一些用到的颜色:</p>
+<blockquote>
+<p>Toolbars and larger color blocks should use the primary <strong>500</strong> color, which should be the main color of your app. The status bar should be the darker <strong>700</strong> tint of your primary color.</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="comment">&lt;!--values/colors.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"color_primary"</span>&gt;</span>#3F51B5<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"color_primary_dark"</span>&gt;</span>#303F9F<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"color_accent"</span>&gt;</span>#E91E63<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/04/android-material-design-01/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2015/01/04/android-material-design-01/" data-id="cjj5f7fy9000194r8kwzm3pcm" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2015/01/04/android-material-design-01/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-create-floating-action-button-on-android" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2015/01/03/create-floating-action-button-on-android/" class="article-date">
+  <time datetime="2015-01-03T07:00:00.000Z" itemprop="datePublished">2015-01-03</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/03/create-floating-action-button-on-android/">Android悬浮按钮Floating Action Button</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android 5.0中引入了一个很多新的设计，其中有一个是悬浮按钮Floating action button的规范，具体规范可以看这里<a href="http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons" target="_blank" rel="noopener"><em>Button</em></a>。</p>
+<p>网上有很多实现方法，不过最简单的还是使用<code>ImageButton</code>，今天就来实现下。</p>
+<p>根据设计规范:</p>
+<p><img src="http://treizeor.qiniudn.com/img/Screenshot from 2015-01-03 21:37:38.png" alt=""></p>
+<p>我们先在文件<code>res/values/dimens.xml</code>中定义一些用到的值:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"btn_fab_size"</span>&gt;</span>56dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"btn_fab_margin"</span>&gt;</span>16dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"default_elevation"</span>&gt;</span>8dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/03/create-floating-action-button-on-android/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2015/01/03/create-floating-action-button-on-android/" data-id="cjj5f7fyo000694r8wufux9hk" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2015/01/03/create-floating-action-button-on-android/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-android-baidumap-api-learning2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2014/12/08/android-baidumap-api-learning2/" class="article-date">
+  <time datetime="2014-12-08T07:00:00.000Z" itemprop="datePublished">2014-12-08</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/08/android-baidumap-api-learning2/">Android百度地图SDK图层</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>其实也没什么需要准备的，无非下载<a href="http://developer.baidu.com/map/index.php?title=androidsdk/sdkandev-download" target="_blank" rel="noopener"><strong>SDK</strong></a>和申请<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="noopener"><strong>KEY</strong></a>.话说，百度的SDK<a href="http://developer.baidu.com/map/index.php?title=androidsdk/guide/introduction" target="_blank" rel="noopener"><strong>开发指南</strong></a>虽然没有详细到每行代码都打出来，不过也足够详细了。所以想了解细节的话还是去看开发指南好点。这里只是简单记录下学习的过程。</p>
+<h3 id="代码清单"><a href="#代码清单" class="headerlink" title="代码清单"></a>代码清单</h3><p>AndroidManifest.xml</p>
+<p>声明权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.GET_ACCOUNTS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.USE_CREDENTIALS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.MANAGE_ACCOUNTS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.AUTHENTICATE_ACCOUNTS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"com.android.launcher.permission.READ_SETTINGS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CHANGE_WIFI_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BROADCAST_STICKY"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_SETTINGS"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/08/android-baidumap-api-learning2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2014/12/08/android-baidumap-api-learning2/" data-id="cjj5f7fy3000094r8mu34sx42" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2014/12/08/android-baidumap-api-learning2/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-baidumap-sdk-learning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2014/12/07/baidumap-sdk-learning/" class="article-date">
+  <time datetime="2014-12-07T11:10:34.000Z" itemprop="datePublished">2014-12-07</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/07/baidumap-sdk-learning/">百度地图SDK之定位功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>获取密钥: 具体步骤看<a href="http://developer.baidu.com/map/wiki/index.php?title=androidsdk/guide/key" target="_blank" rel="noopener"><strong>这里</strong></a></li>
+<li>下载库文件: <a href="http://developer.baidu.com/map/index.php?title=android-locsdk/geosdk-android-download" target="_blank" rel="noopener"><strong>链接</strong></a></li>
+</ul>
+<p>事实上，我觉得百度的Android定位SDK<a href="http://developer.baidu.com/map/index.php?title=android-locsdk/guide/v4-2" target="_blank" rel="noopener"><strong>开发指南</strong></a>已经很详细了。本文中的例子就是根据开发指南写的。</p>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>设置<strong>AndroidManifest.xml</strong></p>
+<p>在application标签中声明service组件,每个app拥有自己单独的定位service</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;service android:name=<span class="string">"com.baidu.location.f"</span> android:enabled=<span class="string">"true"</span> android:process=<span class="string">":remote"</span>&gt;</span><br><span class="line">&lt;/service&gt;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/07/baidumap-sdk-learning/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2014/12/07/baidumap-sdk-learning/" data-id="cjj5f7fyh000494r83maeoadv" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2014/12/07/baidumap-sdk-learning/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-setup-wifi-on-raspi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2014/12/07/setup-wifi-on-raspi/" class="article-date">
+  <time datetime="2014-12-07T07:00:00.000Z" itemprop="datePublished">2014-12-07</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/07/setup-wifi-on-raspi/">Raspberry Pi无线网卡配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前段时间入手了一个树莓派，作为个人学习用途等不愧为利器。为了方便在不同场地使用，不用拖着网线和自动接入不同WIFI。一个无线网卡是必须的。针对不同WIFI进行设置也是有必要的。</p>
+<p>因此，这里简单记录下配置，主要涉及两个文件：</p>
+<p><code>cat /etc/wpa_supplicant/wpa_supplicant.conf</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/07/setup-wifi-on-raspi/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/">raspberrypi</a></li></ul>
+
+        <a data-url="http://simplism.life/2014/12/07/setup-wifi-on-raspi/" data-id="cjj5f7fz1000o94r8phwmctcx" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2014/12/07/setup-wifi-on-raspi/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-install-openwrt-on-703n-and-extend-space-with-usb-flash-drive" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/" class="article-date">
+  <time datetime="2014-10-13T11:10:34.000Z" itemprop="datePublished">2014-10-13</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/">WR703N刷OpenWrt及使用U盘扩容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>路由器分两种情况，一种是没原厂固件没刷过的，一种是已经刷过需要重刷的。</p>
+<ul>
+<li>没刷过的话很简单，直接在OpenWrt的<a href="http://wiki.openwrt.org/toh/tp-link/tl-wr703n" target="_blank" rel="noopener"><em>Wiki</em></a>页下载<a href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-tl-wr703n-v1-squashfs-factory.bin" target="_blank" rel="noopener"><em>squashfs-factory.bin</em></a>，然后进入路由器管理界面更新固件，选择下载的固件更新就可以了</li>
+<li>刷过的话则ssh进入路由器(<del>话说既然刷过，那还用看这个吗。最近老感觉什么都没必要写，Google用得太多了的缘故吗</del>)，切换到<code>/tmp</code>目录</li>
+</ul>
+<p><code>cd /tmp</code></p>
+<p>然后wget下载固件</p>
+<p><code>wget http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-tl-wr703n-v1-squashfs-factory.bin</code></p>
+<p>完成后用<code>mtd</code>命令刷入</p>
+<p><code>mtd -r write openwrt-ar71xx-generic-tl-wr703n-v1-squashfs-factory.bin firmware</code></p>
+<p>刷完会自动重启。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openwrt/">openwrt</a></li></ul>
+
+        <a data-url="http://simplism.life/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/" data-id="cjj5f7fyt000a94r8z0lrnfil" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2014/10/13/install-openwrt-on-703n-and-extend-space-with-usb-flash-drive/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/13/机器学习笔记/">机器学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/13/什么是费曼技巧/">什么是费曼技巧？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/书非借不能读/">书非借不能读？书非图书馆不能读？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/雨夜，2018杂想/">雨夜，2018杂想</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/qml-listview-drag-to-oreder/">Qml实现ListView拖动排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt/">Qt</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberrypi/">raspberrypi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习技巧/">学习技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Uranus<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+	  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	  .
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次.</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
+
+
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+<!-- uyan start -->
+<script type="text/javascript">
+var uyanQuery = {short_name:"2155211"};
+  (function() {
+    var uy = document.createElement('script');
+    uy.type = 'text/javascript';uy.async = true;
+    uy.src = 'http://v2.uyan.cc/code/uyan.js?uid=2155211';
+    uy.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(uy);
+  })();
+  </script>
+<!-- uyan end -->
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

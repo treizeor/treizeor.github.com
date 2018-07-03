@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>统计学习三要素(笔记) | Simplism Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="统计学习方法都是由模型、策略和算法构成的，可简单表示为方法 = 模型 + 策略 + 算法下面论述监督学习中的统计学习方法三要素。 模型统计学习方法首要考虑的问题是学习什么样的模型。在监督学习过程中，模型就是所要学习的条件概率分布或决策函数。模型的假设空间(hypothesis space)包含所有可能的条件概率分布或决策函数。假设空间用$$F$$表示，假设空间可以定义为决策函数的集合$$F={f\">
+<meta name="keywords" content="math">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学习三要素(笔记)">
+<meta property="og:url" content="http://simplism.life/2017/05/09/统计学习三要素/index.html">
+<meta property="og:site_name" content="Simplism Life">
+<meta property="og:description" content="统计学习方法都是由模型、策略和算法构成的，可简单表示为方法 = 模型 + 策略 + 算法下面论述监督学习中的统计学习方法三要素。 模型统计学习方法首要考虑的问题是学习什么样的模型。在监督学习过程中，模型就是所要学习的条件概率分布或决策函数。模型的假设空间(hypothesis space)包含所有可能的条件概率分布或决策函数。假设空间用$$F$$表示，假设空间可以定义为决策函数的集合$$F={f\">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-05-11T11:52:54.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学习三要素(笔记)">
+<meta name="twitter:description" content="统计学习方法都是由模型、策略和算法构成的，可简单表示为方法 = 模型 + 策略 + 算法下面论述监督学习中的统计学习方法三要素。 模型统计学习方法首要考虑的问题是学习什么样的模型。在监督学习过程中，模型就是所要学习的条件概率分布或决策函数。模型的假设空间(hypothesis space)包含所有可能的条件概率分布或决策函数。假设空间用$$F$$表示，假设空间可以定义为决策函数的集合$$F={f\">
+  
+    <link rel="alternative" href="/atom.xml" title="Simplism Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+  
+
+</head>
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Simplism Life</a>
+        </h1>
+      
+    </div>
+    <!-- <div id="contenedor" >
+      <ul class="cube">
+        <li class="cara">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="100" viewBox="-50 -50 200 200">
+          <circle cx="50" cy="50" r="45" stroke-width="5" stroke="black" stroke-opacity="0.5" fill-opacity="0"></circle>
+          <rect x="47.5" y="27.5" width="5" height="25" rx="2.5" ry="2.5" fill="black" fill-opacity="0.5" transform="rotate(330 50 50)"></rect>
+          <rect x="48.5" y="16.5" width="3" height="35" rx="1.5" ry="1.5" fill="black" fill-opacity="0.5"></rect>
+          </svg>
+        </li>
+        <li class="cara">H</li>
+        <li class="cara">E</li>
+        <li class="cara">X</li>
+        <li class="cara">O</li>
+        <li class="cara">M</li>
+      </ul>
+    </div> -->
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-统计学习三要素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/05/09/统计学习三要素/" class="article-date">
+  <time datetime="2017-05-09T15:53:36.000Z" itemprop="datePublished">2017-05-09</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      统计学习三要素(笔记)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>统计学习方法都是由模型、策略和算法构成的，可简单表示为<br><strong>方法 = 模型 + 策略 + 算法</strong><br>下面论述监督学习中的统计学习方法三要素。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>统计学习方法首要考虑的问题是学习什么样的模型。在监督学习过程中，模型就是所要学习的条件概率分布或决策函数。模型的假设空间(hypothesis space)包含所有可能的条件概率分布或决策函数。<br>假设空间用$$F$$表示，假设空间可以定义为决策函数的集合<br>$$<br>F={f\;|\;Y=f_\theta(X),\theta \in R^n}<br>$$<br>也可以定义为条件概率的集合<br>$$<br>F={P\;|\;P(Y|X),\theta \in R^n}<br>$$<br>参数向量$$\theta$$取值于$$n$$维欧氏空间 <strong>$$R^n$$</strong>，也称为参数空间(parameter space)。</p>
+<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>统计学习的目标在于从假设空间中选取最优模型。</p>
+<h3 id="1-损失函数和风险函数"><a href="#1-损失函数和风险函数" class="headerlink" title="1. 损失函数和风险函数"></a>1. 损失函数和风险函数</h3><p><strong>损失函数(loss function)</strong>:度量模型一次预测的好坏，记作 $$L(Y,f(X))$$<br>常用的损失函数有几种</p>
+<ol>
+<li>0-1损失函数(0-1 loss function)<br>$$<br>L(Y,f(X)) =<br>\begin{cases}<br>1, &amp; Y \neq f(X) \<br>0, &amp; Y = f(X) \<br>\end{cases}<br>$$</li>
+<li>平方损失函数(quadratic loss function)<br>$$L(Y,f(X))=(Y-f(X))^2$$</li>
+<li>绝对损失函数(absolute loss function)<br>$$L(Y,f(X))=|Y-f(X)|$$</li>
+<li>对数损失函数(logarithmic loss function)<br>$$L(Y,P(Y|X))=-log P(Y|X)$$</li>
+</ol>
+<p><strong>风险函数(risk function)</strong> 或 <strong>期望损失(expected loss)</strong>:度量平均意义下模型预测的好坏。</p>
+<p>损失函数值越小，模型就越好。由于模型的输入、输出$(X,Y)$是随机变量，遵循联合分布$P(X,Y)$，所以损失函数的期望是<br>$$R_{exp}(f)=E_P[L(Y,f(X))]=\int_{x \times y}L(y, f(x))P(x,y)dx\,dy$$</p>
+<p>给定一个训练数据集<br>$$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$$<br>模型$$f(X)$$关于训练数据集的平均损失称为经验风险(empirical risk)或经验损失(empirical losss),记作$$R_{emp}$$:<br>$$R_{emp}(f) = {1 \over N} \sum_{i=1}^N L(y_i, f(x_i)) $$</p>
+<p>期望风险$$R_{exp}(f)$$是模型关于联合分布的期望损失，经验风险$$R_{emp}(f)$$是模型关于训练样本的平均损失。根据大数定律，当样本容量$$N$$趋于无穷时，经验风险$$R_{emp}(f)$$趋于期望风险$$R_{exp}(f)$$。所以一个很自然的想法就是用经验风险估算期望风险。但是，由于现实中训练样本数目有限，甚至很小，所以用经验风险估算期望风险常常并不理想，要对经验风险进行一定的矫正。这就关系到监督学习的两个基本策略：经验风险最小化和结构风险最小化。</p>
+<h3 id="2-经验风险最小化与结构风险最小化"><a href="#2-经验风险最小化与结构风险最小化" class="headerlink" title="2. 经验风险最小化与结构风险最小化"></a>2. 经验风险最小化与结构风险最小化</h3><p><strong>经验风险最小化(empirical risk minimization, ERM)</strong>的策略认为，经验风险最小的模型是最优模型。即<br>$$ \min_{f \in F}\;{1 \over N}\sum_{i=1}^N L(y_i, f(x_i))$$<br>其中，$$F$$是假设空间。<strong>极大似然估计(maximum likelihood estimation)</strong> 就是经验风险最小化的例子。</p>
+<p><strong>结构风险最小化(structural risk minimization, SRM)</strong>是为了防止过拟合而提出来的策略。结构风险最小化等价于正则化(regularization)。结构风险在经验风险上加上表示模型复杂度的正则化项(regularizer)或罚项(penalty term)。在假设空间、损失函数以及训练数据集确定的情况下，结构风险的定义是<br>$$ R_{srm}(f) = {1 \over N}\sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f) $$<br>其中$$J(f)$$为模型的复杂度，是定义在假设空间$$F$$上的泛函。模型$$f$$越复杂，复杂度$$J(f)$$就越大；反之亦然。$$\lambda \ge 0$$ 是系数，用以权衡经验风险和模型复杂度。结构风险小需要经验风险和模型复杂度同时小。结构风险小的模型往往对训练数据及未知的测试数据都有比较好的预测。<br>比如，贝叶斯估计中的 <strong>最大后验概率估计(maximum posterior probability estimation,MAP)</strong> 就是结构风险最小化的一个例子。<br>结构风险最小化即<br>$$ \min_{f \in F} {1 \over N} \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f) $$</p>
+<p>这样，<strong>监督学习问题就变成了经验风险或结构风险函数的最优化问题</strong>。</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>算法是指学习模型的具体计算方法。<br>统计学习基于训练数据集，根据学习策略，从假设空间中选择最优模型。算法的作用即用于求解该最优模型。<br>统计学习问题可归结为最优化问题，统计学习的算法成为求解最优化问题的算法。可以利用已有的最优化算法，有时也需要开发独自的最优化算法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/">math</a></li></ul>
+
+        <a data-url="http://simplism.life/2017/05/09/统计学习三要素/" data-id="cjj5f7fzg001894r8gjfbj2hy" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2017/05/09/统计学习三要素/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+    
+  <!-- css -->
+  <style type="text/css">
+      .center {
+          text-align: center;
+      }
+      .hidden {
+          display: none;
+      }
+    .donate_bar a.btn_donate{
+      display: inline-block;
+      width: 82px;
+      height: 82px;
+      background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+      _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+      <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+           因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+         为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+         嵌入其它博客时不一定要它们。 -->
+      -webkit-transition: background 0s;
+      -moz-transition: background 0s;
+      -o-transition: background 0s;
+      -ms-transition: background 0s;
+      transition: background 0s;
+      <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+    }
+
+    .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+    .donate_bar .donate_txt {
+      display: block;
+      color: #9d9d9d;
+      font: 14px/2 "Microsoft Yahei";
+    }
+    .bold{ font-weight: bold; }
+  </style>
+  <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+  <!-- btn_donate & tips -->
+  <div id="donate_board" class="donate_bar center">
+     <br>
+    <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+    <span class="donate_txt">
+      Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+    </span>
+      
+    
+  </div>
+  <!-- /btn_donate & tips -->
+
+  <!-- donate guide -->
+    
+  <div id="donate_guide" class="donate_bar center hidden">
+    <br>
+
+    <a href="/img/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+      <img src="/img/wechatpay.png" title="微信打赏" height="190px" width="auto"/>
+    </a>
+        
+        &nbsp;&nbsp;
+
+    <a href="/img/alipay.png" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+      <img src="/img/alipay.png" title="支付宝打赏" height="190px" width="auto"/>
+    </a>
+
+    <span class="donate_txt">
+      Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+    </span>
+
+  </div>
+  <!-- /donate guide -->
+
+  <!-- donate script -->
+  <script type="text/javascript">
+    document.getElementById('btn_donate').onclick = function() {
+      $('#donate_board').addClass('hidden');
+      $('#donate_guide').removeClass('hidden');
+    }
+
+    function donate_on_web(){
+      $('#donate').submit();
+        }
+
+    var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+    }
+  </script>
+  <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/11/qml-listview-drag-to-oreder/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Qml实现ListView拖动排序
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/09/qml-expandable-item/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Qml中实现可伸展布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/05/09/统计学习三要素/" data-title="统计学习三要素(笔记)" data-url="http://simplism.life/2017/05/09/统计学习三要素/"></div>
+
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2155211"></script>
+  </section>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/13/机器学习笔记/">机器学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/13/什么是费曼技巧/">什么是费曼技巧？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/书非借不能读/">书非借不能读？书非图书馆不能读？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/雨夜，2018杂想/">雨夜，2018杂想</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/qml-listview-drag-to-oreder/">Qml实现ListView拖动排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt/">Qt</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberrypi/">raspberrypi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习技巧/">学习技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Uranus<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+	  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	  .
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次.</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
+
+
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+<!-- uyan start -->
+<script type="text/javascript">
+var uyanQuery = {short_name:"2155211"};
+  (function() {
+    var uy = document.createElement('script');
+    uy.type = 'text/javascript';uy.async = true;
+    uy.src = 'http://v2.uyan.cc/code/uyan.js?uid=2155211';
+    uy.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(uy);
+  })();
+  </script>
+<!-- uyan end -->
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

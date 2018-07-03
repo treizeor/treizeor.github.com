@@ -1,0 +1,860 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>Simplism Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Simplism Life">
+<meta property="og:url" content="http://simplism.life/index.html">
+<meta property="og:site_name" content="Simplism Life">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simplism Life">
+  
+    <link rel="alternative" href="/atom.xml" title="Simplism Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+  
+
+</head>
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Simplism Life</a>
+        </h1>
+      
+    </div>
+    <!-- <div id="contenedor" >
+      <ul class="cube">
+        <li class="cara">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="100" viewBox="-50 -50 200 200">
+          <circle cx="50" cy="50" r="45" stroke-width="5" stroke="black" stroke-opacity="0.5" fill-opacity="0"></circle>
+          <rect x="47.5" y="27.5" width="5" height="25" rx="2.5" ry="2.5" fill="black" fill-opacity="0.5" transform="rotate(330 50 50)"></rect>
+          <rect x="48.5" y="16.5" width="3" height="35" rx="1.5" ry="1.5" fill="black" fill-opacity="0.5"></rect>
+          </svg>
+        </li>
+        <li class="cara">H</li>
+        <li class="cara">E</li>
+        <li class="cara">X</li>
+        <li class="cara">O</li>
+        <li class="cara">M</li>
+      </ul>
+    </div> -->
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-机器学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/01/13/机器学习笔记/" class="article-date">
+  <time datetime="2018-01-13T02:27:53.000Z" itemprop="datePublished">2018-01-13</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/机器学习笔记/">机器学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><strong>召回率</strong>： <strong>检索</strong>出的相关样本数和<strong>样本库</strong>中所有相关样本数的比率，衡量查全率。</li>
+<li><strong>精确率</strong>： <strong>检索</strong>出的相关样本数和<strong>检索</strong>出的样本总数的比率，衡量查准率。</li>
+</ul>
+<h2 id="分类和回归的训练过程"><a href="#分类和回归的训练过程" class="headerlink" title="分类和回归的训练过程"></a>分类和回归的训练过程</h2><ol>
+<li>输入样本和训练标签。</li>
+<li>建立映射假说的某个 $$y=f(x)$$ 的模型。</li>
+<li>求解出全局的损失函数 <em>Lose</em> 和待定系数 <em>w</em> 的映射关系，$$Loss=g(w)$$ 。</li>
+<li>通过迭代逐步降低 <em>Loss</em> ，最终找到一个 <em>w</em> 使得精确率和召回率满足当前场景需要。尤其指验证数集上的表现。</li>
+</ol>
+<h2 id="神经元"><a href="#神经元" class="headerlink" title="神经元"></a>神经元</h2><p>通常由两部分组成：</p>
+<ol>
+<li><strong>线性模型</strong> $$f(x)=wx+b$$</li>
+<li><strong>激励函数</strong> 在一个神经元当中跟随在$$f(x)=wx+b$$函数之后，用来加入一些非线性因素。</li>
+</ol>
+<h3 id="常见激励函数"><a href="#常见激励函数" class="headerlink" title="常见激励函数"></a>常见激励函数</h3><ol>
+<li><p><strong>Sigmoid函数</strong><br>$$f(x)= {1 \over {1+e^{-(wx+b)}}}$$<br>也可以写成<br>$$z=wx+b \,, f(z)={1 \over {1+e^{-z}}}$$</p>
+</li>
+<li><p><strong>Tanh函数</strong> 也叫双正切函数，表达式如下<br>$$tanh(x)={e^x-e^{-x} \over e^x+e^{-x}}$$</p>
+</li>
+<li><p><strong>ReLU函数</strong><br>ReLU函数是目前大部分卷积神经网络 <em>CNN(convolutional neural networks)</em> 中喜欢使用的激励函数，它的全名是 <em>rectified linear units</em>.<br>$$y=max(x,0)$$<br>这个函数是原点左侧斜率为0，右侧斜率为1的直线。x小于0时输出一律为0，x大于0时输出就是输入值。</p>
+</li>
+<li><p><strong>Linear函数</strong><br>Linear函数在实际应用中并不太多，因为如果网络中前面的线性层引入是是线性关系，后面的激励层还是线性关系，就会让网络无法很好地拟合非线性特性的关系，从而发生严重的欠拟合现象。函数表达式为<br>$$f(x)=x$$</p>
+</li>
+</ol>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p>由多个神经元（神经节点）首尾连接形成一个类似于网络的结构来协同工作，这样的网络可称为神经网络。<br>一个神经网络中通常有<strong>输入层(input layer)</strong>、<strong>隐藏曾(hidden layer)</strong>、<strong>输出层(ouput layer)</strong>。</p>
+<h3 id="前馈神经网络-feedforward-neural-network"><a href="#前馈神经网络-feedforward-neural-network" class="headerlink" title="前馈神经网络( feedforward neural network )"></a>前馈神经网络( <em>feedforward neural network</em> )</h3><p>在这个网络中，各神经元从输入层开始，接收前一级输入，并输出到下一级，直至输出层。整个网络无反馈，可以用一个有向无环图( <em>directed acyclic graph, DAG</em> )表示。<br>通常所说的前馈神经网络有两种:</p>
+<ol>
+<li><strong>Back Propagation Network</strong> 方向传播网络，简称<strong>BP网络</strong></li>
+<li><strong>BRF Network</strong> 径向基函数神经网络</li>
+</ol>
+<h1 id="机器学习导论"><a href="#机器学习导论" class="headerlink" title="机器学习导论"></a>机器学习导论</h1><h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+        <a data-url="http://simplism.life/2018/01/13/机器学习笔记/" data-id="cjj5f7fze001494r8inztgp8d" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2018/01/13/机器学习笔记/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-什么是费曼技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/01/13/什么是费曼技巧/" class="article-date">
+  <time datetime="2018-01-13T01:53:38.000Z" itemprop="datePublished">2018-01-13</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/什么是费曼技巧/">什么是费曼技巧？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p><strong>是一种通过教会别人来使自己掌握新知识的技巧</strong></p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>确定目标，即你要学习和教会别人的知识、概念。</li>
+<li>尝试将这个知识用自己的话教给别人，使其能够理解和接受。</li>
+<li>如果发现有自己不理解或者无法解释清楚的地方，立刻去查资料学习。</li>
+<li>归纳总结，将这个知识点用更简洁明了的话来概括。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习技巧/">学习技巧</a></li></ul>
+
+        <a data-url="http://simplism.life/2018/01/13/什么是费曼技巧/" data-id="cjj5f7fzc001194r8lt8jr2x2" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2018/01/13/什么是费曼技巧/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-书非借不能读" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/01/07/书非借不能读/" class="article-date">
+  <time datetime="2018-01-07T06:42:15.000Z" itemprop="datePublished">2018-01-07</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/07/书非借不能读/">书非借不能读？书非图书馆不能读？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p><strong>书非借不能读也。</strong></p>
+<p>在图书馆看书的时候想到这句话，想来只是个借口吧。刚过去的2017，买了很多书，也借了很多书，读完的却寥寥无几，而因超期还书产生的费用也有好几十了。</p>
+<p>以往读书从来不做笔记，今天突然想做思维导图，于是打开了ProcessOn。看到上面在搞促销砍价活动，想着以后多做笔记，多画导图，买一个倒也不错。于是发了砍价链接到群里，作为一个怕麻烦别人的人，当然也顺便发了个红包。只是没想到，领红包的人很多，帮忙点一下的却没几个。</p>
+<p>此时在图书馆里反省，是我对别人要求太多了吗，别人没义务为你红包做什么。所以以后就别发红包了，直接买就好了，这样省事些，也不欠人情。</p>
+<p>在我买了ProcessOn会员之后突然有点后悔了，因为觉得自己可能用不了那么多功能，又有别的替代方案，竟想着去退款。去看了下，好像没有可以退款的地方。</p>
+<p>说回到<strong>书非借不能读</strong>，现在还有个说法是<strong>书非买不能读</strong>。过去的一年，可以说为知识付费兴起的一年。从知乎live、值乎、各种公众号、付费视频、付费读书等一些付费学习中可见一斑。也许是世界变化太快，每个人都有一种知识不够用的焦虑感。花了钱不一定买得到知识，但因为给了钱了，为了让这笔钱花得物有所值，会努力督促自己去学去用。想来我冲动之下买了ProcessOn会员也是因这种焦虑感。</p>
+<p>然而，袁枚老先生说的书非借不能读，对应的是当时物质匮乏，读书不是一件易事。买不起书的人，借来的书都会约好还书时间，因紧迫而读。所以后来有钱买书之后反而不紧迫，不急着读，反而因此拖延了。对比现在，买书实在太易，借书也不难，而且超期也无所谓，加上手机和互联网对注意力的分散，反而越来越难以静下心来读书了。</p>
+<p>现在，大概也就在图书馆这些有读书学习氛围的地方，才能静下心来好好看书学习吧。或者可以尝试在固定的时间关掉手机电脑，用来静心读书。</p>
+<p>因此不妨把这句话改成：<strong>非图书馆不能读书。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+        <a data-url="http://simplism.life/2018/01/07/书非借不能读/" data-id="cjj5f7fz8000x94r88791atfm" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2018/01/07/书非借不能读/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-雨夜，2018杂想" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/01/07/雨夜，2018杂想/" class="article-date">
+  <time datetime="2018-01-06T16:36:39.000Z" itemprop="datePublished">2018-01-07</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/07/雨夜，2018杂想/">雨夜，2018杂想</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>刚看完《银翼杀手2049》，心里好多乱七八糟的念头，也不全是关于这部电影的。因为近来加班较多，累是一方面，另一方面是越来越焦虑。闲暇之余都恨不得爬山减压。</p>
+<p>刚过去的2017，其实过得并不如意，像是白过了一年。曾经有的，想要做的事情都没完成。关于读书，关于写作，关于学习，关于爱情，关于生活。压力太大，却不知从何处来。项目进度过慢，这个锅我觉得应该产品经理来背，当然我们没有产品经理，所以这个锅部门经理背。因为需求改得太魔幻，我也不知道说啥了。这一年，从做安卓到做桌面客户端再到做网页再回到做安卓再到做桌面，感觉像走马观花一样。结果没一样能完成的。原本有些东西做下去就能出成果的，非得做一半又抛弃。技术应该服务于产品，而不应该不断更换技术。</p>
+<p>去年年初的时候就想着要把《代码大全》看完。如今还在开头的地方，甚至已经忘了看过的内容了。曾想过好好写博客，好好写日记的也是荒废了。今年应该列一个计划，把想要做的事情都完成了。还要多看书，多写博客，即使不是技术的也可以写，就当是记录生活了。</p>
+<p>说到底还是时间太少，或许会减少户外活动的时间，多带书出门。多实践，多码字，多思考。希望2018不再荒废。</p>
+<p>最后，《银翼杀手2049》真的很好看。虽说看这个是为了减压，不过里面关于复制人不由得让我想到AI。人工智能在飞速发展，如果它们有了思想，我们又将如何对待？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+        <a data-url="http://simplism.life/2018/01/07/雨夜，2018杂想/" data-id="cjj5f7fzj001a94r89hlucq6n" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2018/01/07/雨夜，2018杂想/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-qml-listview-drag-to-oreder" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/05/11/qml-listview-drag-to-oreder/" class="article-date">
+  <time datetime="2017-05-11T05:54:58.000Z" itemprop="datePublished">2017-05-11</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/qml-listview-drag-to-oreder/">Qml实现ListView拖动排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>列表拖动排序在很多应用中都存在, 在 Qt Quick 中如何实现呢。网上查了下没有太多相关资料，于是决定自己写一个。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><strong>MouseArea</strong> 中可以可以设置 <strong>DragEvent</strong> 来对某个 Item 进行拖动。<strong>Drag</strong> 这个类一般附着在可能被拖动的 Item 上，用来设置相关的信息。它提供了很多附加属性。如</p>
+<ul>
+<li><strong>Drag.active: bool</strong> 这个属性用来指示控件是否正在被拖动。可以用来绑定 MouseArea 的 MouseArea::drag 属性，当用户拖动鼠标的时候就会产生 drag 事件。</li>
+<li><strong>Drag.target : Object</strong> 当 active 为 true （拖动处于活跃状态）时，这个属性保存最后一个被拖动的 dragged item。</li>
+</ul>
+<p><strong>DropArea</strong> 定义了一个可以接收拖放的区域。它的 entered 信号在有物体被拖入区域时发射，exited 信号在物体被拖出区域时发射，当物体在区域内被拖着来回移动时会不断发射 positionChanged 信号，当用户释放了物体，dropped 信号被发射。</p>
+<p>在这个例子中，我们需要在整个 ListView 中填充一个 DropArea 用来接收释放的 Item。Item 中绑定 MouseArea 的 drag 事件。释放的时候计算相应的位置并把拖动位置的 Item 移到释放位置。需要注意的是列表滚动之后要加上滚动的距离。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">Item &#123;</span><br><span class="line">    id:root</span><br><span class="line">    anchors.fill: parent</span><br><span class="line">    ListView &#123;</span><br><span class="line">        id: listView</span><br><span class="line">        width: parent.width / <span class="number">2</span></span><br><span class="line">        height: parent.height</span><br><span class="line">        property int dragItemIndex: <span class="number">-1</span></span><br><span class="line">        ScrollBar.vertical: ScrollBar&#123;<span class="attr">id</span>:scrollBar&#125;</span><br><span class="line"></span><br><span class="line">        DropArea &#123;</span><br><span class="line">            id: dropArea</span><br><span class="line">            anchors.fill: parent</span><br><span class="line">            onDropped: &#123;</span><br><span class="line">                <span class="comment">// 获取释放时listView的targetIndex, 需要加上滚动的高度</span></span><br><span class="line">                <span class="keyword">var</span> targetIndex = listView.indexAt(drag.x, drag.y + listView.contentY)</span><br><span class="line">                listView.model.move(listView.dragItemIndex, targetIndex, <span class="number">1</span>)</span><br><span class="line">                listView.dragItemIndex = <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        model: ListModel &#123;</span><br><span class="line">            Component.onCompleted: &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">30</span>; ++i) &#123;</span><br><span class="line">                    append(&#123;<span class="attr">value</span>: i&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        delegate: Item &#123;</span><br><span class="line">            id: delegateItem</span><br><span class="line">            width: listView.width</span><br><span class="line">            height: <span class="number">30</span></span><br><span class="line"></span><br><span class="line">            Rectangle &#123;</span><br><span class="line">                anchors.fill: parent</span><br><span class="line">                Label &#123;</span><br><span class="line">                    text: index+<span class="number">1</span></span><br><span class="line">                    anchors.verticalCenter: parent.verticalCenter</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Rectangle &#123;</span><br><span class="line">                    id: dragRect</span><br><span class="line">                    width: listView.width<span class="number">-50</span></span><br><span class="line">                    height: <span class="number">30</span></span><br><span class="line">                    anchors.horizontalCenter: parent.horizontalCenter</span><br><span class="line">                    anchors.verticalCenter: parent.verticalCenter</span><br><span class="line">                    color: <span class="string">"salmon"</span></span><br><span class="line">                    border.color: Qt.darker(color)</span><br><span class="line"></span><br><span class="line">                    Text &#123;</span><br><span class="line">                        anchors.centerIn: parent</span><br><span class="line">                        text: modelData</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    MouseArea &#123;</span><br><span class="line">                        id: mouseArea</span><br><span class="line">                        anchors.fill: parent</span><br><span class="line">                        drag.target: dragRect</span><br><span class="line">                        drag.axis: Drag.YAxis <span class="comment">// 只允许沿Y轴拖动</span></span><br><span class="line"></span><br><span class="line">                        drag.onActiveChanged: &#123;</span><br><span class="line">                            <span class="keyword">if</span> (mouseArea.drag.active) &#123;</span><br><span class="line">                                listView.dragItemIndex = index;</span><br><span class="line">                            &#125;</span><br><span class="line">                            dragRect.Drag.drop();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    states: [</span><br><span class="line">                        State &#123;</span><br><span class="line">                            when: dragRect.Drag.active</span><br><span class="line">                            ParentChange &#123;</span><br><span class="line">                                target: dragRect</span><br><span class="line">                                parent: root</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                            AnchorChanges &#123;</span><br><span class="line">                                target: dragRect</span><br><span class="line">                                anchors.horizontalCenter: <span class="literal">undefined</span></span><br><span class="line">                                anchors.verticalCenter: <span class="literal">undefined</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line"></span><br><span class="line">                    Drag.active: mouseArea.drag.active</span><br><span class="line">                    Drag.hotSpot.x: dragRect.width / <span class="number">2</span></span><br><span class="line">                    Drag.hotSpot.y: dragRect.height / <span class="number">2</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://treizeor.qiniudn.com/img/qml_drag_oreder.gif" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+
+        <a data-url="http://simplism.life/2017/05/11/qml-listview-drag-to-oreder/" data-id="cjj5f7fyu000c94r8omrezu98" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2017/05/11/qml-listview-drag-to-oreder/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-统计学习三要素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/05/09/统计学习三要素/" class="article-date">
+  <time datetime="2017-05-09T15:53:36.000Z" itemprop="datePublished">2017-05-09</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/统计学习三要素/">统计学习三要素(笔记)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>统计学习方法都是由模型、策略和算法构成的，可简单表示为<br><strong>方法 = 模型 + 策略 + 算法</strong><br>下面论述监督学习中的统计学习方法三要素。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>统计学习方法首要考虑的问题是学习什么样的模型。在监督学习过程中，模型就是所要学习的条件概率分布或决策函数。模型的假设空间(hypothesis space)包含所有可能的条件概率分布或决策函数。<br>假设空间用$$F$$表示，假设空间可以定义为决策函数的集合<br>$$<br>F={f\;|\;Y=f_\theta(X),\theta \in R^n}<br>$$<br>也可以定义为条件概率的集合<br>$$<br>F={P\;|\;P(Y|X),\theta \in R^n}<br>$$<br>参数向量$$\theta$$取值于$$n$$维欧氏空间 <strong>$$R^n$$</strong>，也称为参数空间(parameter space)。</p>
+<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>统计学习的目标在于从假设空间中选取最优模型。</p>
+<h3 id="1-损失函数和风险函数"><a href="#1-损失函数和风险函数" class="headerlink" title="1. 损失函数和风险函数"></a>1. 损失函数和风险函数</h3><p><strong>损失函数(loss function)</strong>:度量模型一次预测的好坏，记作 $$L(Y,f(X))$$<br>常用的损失函数有几种</p>
+<ol>
+<li>0-1损失函数(0-1 loss function)<br>$$<br>L(Y,f(X)) =<br>\begin{cases}<br>1, &amp; Y \neq f(X) \<br>0, &amp; Y = f(X) \<br>\end{cases}<br>$$</li>
+<li>平方损失函数(quadratic loss function)<br>$$L(Y,f(X))=(Y-f(X))^2$$</li>
+<li>绝对损失函数(absolute loss function)<br>$$L(Y,f(X))=|Y-f(X)|$$</li>
+<li>对数损失函数(logarithmic loss function)<br>$$L(Y,P(Y|X))=-log P(Y|X)$$</li>
+</ol>
+<p><strong>风险函数(risk function)</strong> 或 <strong>期望损失(expected loss)</strong>:度量平均意义下模型预测的好坏。</p>
+<p>损失函数值越小，模型就越好。由于模型的输入、输出$(X,Y)$是随机变量，遵循联合分布$P(X,Y)$，所以损失函数的期望是<br>$$R_{exp}(f)=E_P[L(Y,f(X))]=\int_{x \times y}L(y, f(x))P(x,y)dx\,dy$$</p>
+<p>给定一个训练数据集<br>$$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$$<br>模型$$f(X)$$关于训练数据集的平均损失称为经验风险(empirical risk)或经验损失(empirical losss),记作$$R_{emp}$$:<br>$$R_{emp}(f) = {1 \over N} \sum_{i=1}^N L(y_i, f(x_i)) $$</p>
+<p>期望风险$$R_{exp}(f)$$是模型关于联合分布的期望损失，经验风险$$R_{emp}(f)$$是模型关于训练样本的平均损失。根据大数定律，当样本容量$$N$$趋于无穷时，经验风险$$R_{emp}(f)$$趋于期望风险$$R_{exp}(f)$$。所以一个很自然的想法就是用经验风险估算期望风险。但是，由于现实中训练样本数目有限，甚至很小，所以用经验风险估算期望风险常常并不理想，要对经验风险进行一定的矫正。这就关系到监督学习的两个基本策略：经验风险最小化和结构风险最小化。</p>
+<h3 id="2-经验风险最小化与结构风险最小化"><a href="#2-经验风险最小化与结构风险最小化" class="headerlink" title="2. 经验风险最小化与结构风险最小化"></a>2. 经验风险最小化与结构风险最小化</h3><p><strong>经验风险最小化(empirical risk minimization, ERM)</strong>的策略认为，经验风险最小的模型是最优模型。即<br>$$ \min_{f \in F}\;{1 \over N}\sum_{i=1}^N L(y_i, f(x_i))$$<br>其中，$$F$$是假设空间。<strong>极大似然估计(maximum likelihood estimation)</strong> 就是经验风险最小化的例子。</p>
+<p><strong>结构风险最小化(structural risk minimization, SRM)</strong>是为了防止过拟合而提出来的策略。结构风险最小化等价于正则化(regularization)。结构风险在经验风险上加上表示模型复杂度的正则化项(regularizer)或罚项(penalty term)。在假设空间、损失函数以及训练数据集确定的情况下，结构风险的定义是<br>$$ R_{srm}(f) = {1 \over N}\sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f) $$<br>其中$$J(f)$$为模型的复杂度，是定义在假设空间$$F$$上的泛函。模型$$f$$越复杂，复杂度$$J(f)$$就越大；反之亦然。$$\lambda \ge 0$$ 是系数，用以权衡经验风险和模型复杂度。结构风险小需要经验风险和模型复杂度同时小。结构风险小的模型往往对训练数据及未知的测试数据都有比较好的预测。<br>比如，贝叶斯估计中的 <strong>最大后验概率估计(maximum posterior probability estimation,MAP)</strong> 就是结构风险最小化的一个例子。<br>结构风险最小化即<br>$$ \min_{f \in F} {1 \over N} \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f) $$</p>
+<p>这样，<strong>监督学习问题就变成了经验风险或结构风险函数的最优化问题</strong>。</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>算法是指学习模型的具体计算方法。<br>统计学习基于训练数据集，根据学习策略，从假设空间中选择最优模型。算法的作用即用于求解该最优模型。<br>统计学习问题可归结为最优化问题，统计学习的算法成为求解最优化问题的算法。可以利用已有的最优化算法，有时也需要开发独自的最优化算法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/">math</a></li></ul>
+
+        <a data-url="http://simplism.life/2017/05/09/统计学习三要素/" data-id="cjj5f7fzg001894r8gjfbj2hy" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2017/05/09/统计学习三要素/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-qml-expandable-item" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/05/09/qml-expandable-item/" class="article-date">
+  <time datetime="2017-05-09T12:17:46.000Z" itemprop="datePublished">2017-05-09</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/qml-expandable-item/">Qml中实现可伸展布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>公司的项目中需要用Qt写一个桌面软件，因为C++还不很熟悉，因此用QML来写界面。不过相关的资料比较少。除了官方文档基本上找不到第三方控件。</p>
+<p>今天要实现的是一个点击伸展和收缩的控件，找了一遍没找到相关的实现，只能自己写了。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>自定义一个Item，包裹一个按钮和一个扩展区。点击按钮的时候伸展和收缩扩展区的高度, 并在高度变化的时候添加一个动画效果。实现如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//FileName: ExpandableLayout.qml</span></span><br><span class="line">Rectangle &#123;</span><br><span class="line">    property alias title: draw_title.text</span><br><span class="line">    property alias frame: loader.sourceComponent</span><br><span class="line">    property int frameHeight: <span class="number">120</span></span><br><span class="line">    height: draw_title.height + loader.height</span><br><span class="line"></span><br><span class="line">    Button &#123;</span><br><span class="line">        id: draw_title</span><br><span class="line">        onClicked: &#123;loader.height = loader.height === <span class="number">1</span>? frameHeight: <span class="number">1</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Loader &#123;</span><br><span class="line">        anchors.top: draw_title.bottom</span><br><span class="line">        width: draw_title.width</span><br><span class="line">        height: <span class="number">1</span></span><br><span class="line">        id: loader</span><br><span class="line"></span><br><span class="line">        Behavior on height &#123;</span><br><span class="line">            NumberAnimation &#123; <span class="attr">duration</span>: <span class="number">300</span>; easing.type: Easing.OutBack &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExpandableLayout &#123;</span><br><span class="line">       title: <span class="string">"点我"</span></span><br><span class="line">       frameHeight: <span class="number">90</span></span><br><span class="line">       frame: Rectangle &#123;</span><br><span class="line">           color: <span class="string">"red"</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://treizeor.qiniudn.com/img/expandable_layout.gif" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+
+        <a data-url="http://simplism.life/2017/05/09/qml-expandable-item/" data-id="cjj5f7fz5000u94r8u4xxuwnt" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2017/05/09/qml-expandable-item/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-qml-systemtrayicon" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/05/08/qml-systemtrayicon/" class="article-date">
+  <time datetime="2017-05-08T12:00:26.000Z" itemprop="datePublished">2017-05-08</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/qml-systemtrayicon/">Qml中使用SystemTrayIcon实现系统托盘小图标</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p><strong>SystemTrayIcon</strong> 可以在Qml中定义一个显示在系统托盘区域的小图标。</p>
+<p>Qt5.8开始，官方提供了这一实验性的功能。</p>
+<h1 id="导入方式"><a href="#导入方式" class="headerlink" title="导入方式"></a>导入方式</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Qt.labs.platform <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<h1 id="创建系统托盘图标"><a href="#创建系统托盘图标" class="headerlink" title="创建系统托盘图标"></a>创建系统托盘图标</h1><p>很多桌面系统都提供了一个托盘和消息通知区域，用来显示应用图标和消息。</p>
+<p><img src="https://doc.qt.io/qt-5/images/qtlabsplatform-systemtrayicon.png" alt=""></p>
+<p>下面的例子展示了如何创建一个 <strong>SystemTrayIcon</strong>，以及如何使用 <strong>activated()</strong> 信号来触发窗体事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SystemTrayIcon &#123;</span><br><span class="line">    visible: <span class="literal">true</span></span><br><span class="line">    iconSource: <span class="string">"qrc:/images/tray-icon.png"</span></span><br><span class="line"></span><br><span class="line">    onActivated: &#123;</span><br><span class="line">        <span class="built_in">window</span>.show()</span><br><span class="line">        <span class="built_in">window</span>.raise()</span><br><span class="line">        <span class="built_in">window</span>.requestActivate()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用菜单"><a href="#使用菜单" class="headerlink" title="使用菜单"></a>使用菜单</h1><p><strong>SystemTrayIcon</strong> 可以用来创建一个触发的菜单。<br><img src="https://doc.qt.io/qt-5/images/qtlabsplatform-systemtrayicon-menu.png" alt=""><br>下面的例子实现了一个系统托盘图标的菜单。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SystemTrayIcon &#123;</span><br><span class="line">    visible: <span class="literal">true</span></span><br><span class="line">    iconSource: <span class="string">"qrc:/images/tray-icon.png"</span></span><br><span class="line"></span><br><span class="line">    menu: Menu &#123;</span><br><span class="line">        MenuItem &#123;</span><br><span class="line">            text: qsTr(<span class="string">"Quit"</span>)</span><br><span class="line">            onActivated: Qt.quit()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="显示通知消息"><a href="#显示通知消息" class="headerlink" title="显示通知消息"></a>显示通知消息</h1><p><strong>SystemTrayIcon</strong> 也可以先用来显示通知消息。<br><img src="https://doc.qt.io/qt-5/images/qtlabsplatform-systemtrayicon-message.png" alt=""><br>下面的例子展示了如果用 <strong>showMessage()</strong> 来创建通知消息，和使用 <strong>messageClick()</strong> 信号来触发消息的点击事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SystemTrayIcon &#123;</span><br><span class="line">    visible: <span class="literal">true</span></span><br><span class="line">    iconSource: <span class="string">"qrc:/images/tray-icon.png"</span></span><br><span class="line"></span><br><span class="line">    onMessageClicked: <span class="built_in">console</span>.log(<span class="string">"Message clicked"</span>)</span><br><span class="line">    Component.onCompleted: showMessage(<span class="string">"Message title"</span>, <span class="string">"Something important came up. Click this to know more."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+
+        <a data-url="http://simplism.life/2017/05/08/qml-systemtrayicon/" data-id="cjj5f7fyx000h94r8jzx7b3lv" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2017/05/08/qml-systemtrayicon/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-using-slidingtablayout" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2015/01/19/using-slidingtablayout/" class="article-date">
+  <time datetime="2015-01-19T07:00:00.000Z" itemprop="datePublished">2015-01-19</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/19/using-slidingtablayout/">使用SlidingTabLayout和ViewPager打造Tabs布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>将官方的<a href="https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/widget/SlidingTabLayout.java" target="_blank" rel="noopener"><strong>SlidingTabLayout.java</strong></a>和<a href="https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/widget/SlidingTabStrip.java" target="_blank" rel="noopener"><strong>SlidingTabStrip.java</strong></a>拷到自己的项目里面。</p>
+<p>修改布局</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">cn.treize.paperpomodoro.view.SlidingTabLayout</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:id</span>=<span class="string">"@+id/tabs"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:background</span>=<span class="string">"@color/color_primary"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:id</span>=<span class="string">"@+id/pager"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"0dp"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/19/using-slidingtablayout/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2015/01/19/using-slidingtablayout/" data-id="cjj5f7fz3000r94r8rrvychwp" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2015/01/19/using-slidingtablayout/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+    <article id="post-recyclerview-and-cardview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2015/01/08/recyclerview-and-cardview/" class="article-date">
+  <time datetime="2015-01-08T07:00:00.000Z" itemprop="datePublished">2015-01-08</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/08/recyclerview-and-cardview/">RecyclerView和CardView使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>RecyclerView</strong>是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。</p>
+<p><strong>CardView</strong>则是Google提供的一个卡片式视图组件</p>
+<p>这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。</p>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>为了使用RecyclerView和CardView，需要导入support-v7中的两个包。在Android Studio上面很容易。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    compile &apos;com.android.support:recyclerview-v7:21.0.3&apos;</span><br><span class="line">    compile &apos;com.android.support:cardview-v7:21.0.3&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/08/recyclerview-and-cardview/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2015/01/08/recyclerview-and-cardview/" data-id="cjj5f7fz0000k94r8ada498wg" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2015/01/08/recyclerview-and-cardview/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/13/机器学习笔记/">机器学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/13/什么是费曼技巧/">什么是费曼技巧？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/书非借不能读/">书非借不能读？书非图书馆不能读？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/雨夜，2018杂想/">雨夜，2018杂想</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/qml-listview-drag-to-oreder/">Qml实现ListView拖动排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt/">Qt</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberrypi/">raspberrypi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习技巧/">学习技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Uranus<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+	  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	  .
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次.</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
+
+
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+<!-- uyan start -->
+<script type="text/javascript">
+var uyanQuery = {short_name:"2155211"};
+  (function() {
+    var uy = document.createElement('script');
+    uy.type = 'text/javascript';uy.async = true;
+    uy.src = 'http://v2.uyan.cc/code/uyan.js?uid=2155211';
+    uy.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(uy);
+  })();
+  </script>
+<!-- uyan end -->
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

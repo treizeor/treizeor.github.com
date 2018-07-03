@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>建立数据驱动的分层视图(翻译) | Simplism Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="应用程序中有一种很常见的情况是由事件数据驱动UI的显示。本教程中将展示一个我几乎每天工作中都用到的非常有用的技术，这是此前一个非常有才华的工程师教给我的。用于建立多个自定义的视图并用于不同的布局，然后将数据更新到每个布局的一个容器视图里。本教程的所有代码都可以在GitHub上面找到。 英文好且有梯子的请戳这里看原文。 在这个例子中我们要做的第一件事就是创建一个用于更新视图的接口。这个接口只有一个u">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建立数据驱动的分层视图(翻译)">
+<meta property="og:url" content="http://simplism.life/2015/01/05/building-data-driven-hierarchical-views/index.html">
+<meta property="og:site_name" content="Simplism Life">
+<meta property="og:description" content="应用程序中有一种很常见的情况是由事件数据驱动UI的显示。本教程中将展示一个我几乎每天工作中都用到的非常有用的技术，这是此前一个非常有才华的工程师教给我的。用于建立多个自定义的视图并用于不同的布局，然后将数据更新到每个布局的一个容器视图里。本教程的所有代码都可以在GitHub上面找到。 英文好且有梯子的请戳这里看原文。 在这个例子中我们要做的第一件事就是创建一个用于更新视图的接口。这个接口只有一个u">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/ddhv1.png">
+<meta property="og:updated_time" content="2017-04-29T06:00:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="建立数据驱动的分层视图(翻译)">
+<meta name="twitter:description" content="应用程序中有一种很常见的情况是由事件数据驱动UI的显示。本教程中将展示一个我几乎每天工作中都用到的非常有用的技术，这是此前一个非常有才华的工程师教给我的。用于建立多个自定义的视图并用于不同的布局，然后将数据更新到每个布局的一个容器视图里。本教程的所有代码都可以在GitHub上面找到。 英文好且有梯子的请戳这里看原文。 在这个例子中我们要做的第一件事就是创建一个用于更新视图的接口。这个接口只有一个u">
+<meta name="twitter:image" content="http://treizeor.qiniudn.com/img/ddhv1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Simplism Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+  
+
+</head>
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Simplism Life</a>
+        </h1>
+      
+    </div>
+    <!-- <div id="contenedor" >
+      <ul class="cube">
+        <li class="cara">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="100" viewBox="-50 -50 200 200">
+          <circle cx="50" cy="50" r="45" stroke-width="5" stroke="black" stroke-opacity="0.5" fill-opacity="0"></circle>
+          <rect x="47.5" y="27.5" width="5" height="25" rx="2.5" ry="2.5" fill="black" fill-opacity="0.5" transform="rotate(330 50 50)"></rect>
+          <rect x="48.5" y="16.5" width="3" height="35" rx="1.5" ry="1.5" fill="black" fill-opacity="0.5"></rect>
+          </svg>
+        </li>
+        <li class="cara">H</li>
+        <li class="cara">E</li>
+        <li class="cara">X</li>
+        <li class="cara">O</li>
+        <li class="cara">M</li>
+      </ul>
+    </div> -->
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-building-data-driven-hierarchical-views" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2015/01/05/building-data-driven-hierarchical-views/" class="article-date">
+  <time datetime="2015-01-05T07:00:00.000Z" itemprop="datePublished">2015-01-05</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/learning/">learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      建立数据驱动的分层视图(翻译)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>应用程序中有一种很常见的情况是由事件数据驱动UI的显示。本教程中将展示一个我几乎每天工作中都用到的非常有用的技术，这是此前一个非常有才华的工程师教给我的。用于建立多个自定义的视图并用于不同的布局，然后将数据更新到每个布局的一个容器视图里。本教程的所有代码都可以在<a href="https://github.com/PaulTR/AndroidDemoProjects/tree/master/EventDrivenHierarchicalViews" target="_blank" rel="noopener"><em>GitHub</em></a>上面找到。</p>
+<p>英文好且有梯子的请戳<a href="http://ptrprograms.blogspot.com/2014/12/building-data-driven-hierarchical-views.html" target="_blank" rel="noopener"><em>这里</em></a>看原文。</p>
+<p>在这个例子中我们要做的第一件事就是创建一个用于更新视图的接口。这个接口只有一个<code>update</code>方法，用于更新视图数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Updateable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">( Weather weather )</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>接下来，我们将实现一个简单的数据模型，容纳我们用于驱动视图的所有数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Weather</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> temperature;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> windSpeed;</span><br><span class="line">    <span class="keyword">private</span> WindDirection windDirection;</span><br><span class="line">    <span class="keyword">private</span> WeatherCondition condition;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Weather</span><span class="params">( <span class="keyword">int</span> temperature, <span class="keyword">int</span> windSpeed, WindDirection windDirection, WeatherCondition condition )</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.temperature = temperature;</span><br><span class="line">        <span class="keyword">this</span>.windSpeed = windSpeed;</span><br><span class="line">        <span class="keyword">this</span>.windDirection = windDirection;</span><br><span class="line">        <span class="keyword">this</span>.condition = condition;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTemperature</span><span class="params">( <span class="keyword">int</span> temperature )</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.temperature = temperature;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTemperature</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> temperature;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>WindDirection</code>和<code>WeatherConditon</code>只是一些像这样的枚举类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> WeatherCondition &#123;</span><br><span class="line">    RAIN,</span><br><span class="line">    SNOW,</span><br><span class="line">    LIGHTNING,</span><br><span class="line">    SUN,</span><br><span class="line">    CLOUDY,</span><br><span class="line">    FOG</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们已经创建好了数据模型和接口。接下来开始为我们的项目创建<code>updateable</code>视图。为了开始，我们不用标准的只视图，在这里我们修改<em>TextView</em>和<em>ImageView</em>，然后将要触发更新状态的的子视图在其容器视图里面更新。我们第一个updateable视图是<em>WeatherImage</em>，只是简单的继承了<code>ImageView</code>并实现了<code>Updateable</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherImage</span> <span class="keyword">extends</span> <span class="title">ImageView</span> <span class="keyword">implements</span> <span class="title">Updateable</span></span></span><br></pre></td></tr></table></figure>
+<p>在<code>update</code>方法中，我们检查<code>Weather</code>对象所准备的<em>weatherCondition</em>的数据，并根据数据展示一张图片。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">( Weather weather )</span> </span>&#123;</span><br><span class="line">    Log.e( <span class="string">"WeatherImage"</span>, <span class="string">"update!"</span> );</span><br><span class="line">    <span class="keyword">if</span>( weather == <span class="keyword">null</span> || weather.getWeatherCondition() == <span class="keyword">null</span> )</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span>( weather.getWeatherCondition() ) &#123;</span><br><span class="line">        <span class="keyword">case</span> CLOUDY: &#123;</span><br><span class="line">            setImageResource( R.drawable.cloudy );</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> FOG: &#123;</span><br><span class="line">            setImageResource( R.drawable.fog );</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> LIGHTNING: &#123;</span><br><span class="line">            setImageResource( R.drawable.lightning );</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> RAIN: &#123;</span><br><span class="line">            setImageResource( R.drawable.rain );</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> SNOW: &#123;</span><br><span class="line">            setImageResource( R.drawable.snow );</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> SUN: &#123;</span><br><span class="line">            setImageResource( R.drawable.sun );</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们用同样的方法实现了<code>WindWeatherTextView</code>，<code>WeatherTextView</code>和<code>WeatherTemperatureTextView</code>。只是把继承的<em>ImageView</em>改为<em>TextView</em>，如名字所示那样。</p>
+<p>真正神奇的地方发生在这个为其他可更新子视图创建的容器<code>UpdateableLinearLayout</code>这里。这个容器同样实现了Updateable接口，然而并不是用于调整自身，而是调用了其他子视图的<code>update</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UpdateableLinearLayout</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span> <span class="keyword">implements</span> <span class="title">Updateable</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">( Weather weather )</span> </span>&#123;</span><br><span class="line">    Log.e(<span class="string">"UpdateableLinearLayout"</span>, <span class="string">"Update!"</span> );</span><br><span class="line">    <span class="keyword">if</span>( weather != <span class="keyword">null</span> &amp;&amp; mUpdateableViews != <span class="keyword">null</span> &amp;&amp; !mUpdateableViews.isEmpty() ) &#123;</span><br><span class="line">        <span class="keyword">for</span>( Updateable view : mUpdateableViews ) &#123;</span><br><span class="line">            view.update( weather );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>mUpdateableViews</code>是<em>Updateable</em>对象们的一个列表，为了创建一个完整的列表视图，它通过循环和递归找到<code>UpdateableLinearLayout</code>和其子视图中所有实现了<code>Updateable</code>接口的对象，并填充<code>onFinishInflate()</code>方法中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onFinishInflate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onFinishInflate();</span><br><span class="line">    mUpdateableViews = findTopLevelUpdateables( <span class="keyword">this</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Updateable&gt; <span class="title">findTopLevelUpdateables</span><span class="params">( ViewGroup view )</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Updateable&gt; results = <span class="keyword">new</span> ArrayList&lt;Updateable&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> childCount = view.getChildCount();</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childCount; i++ ) &#123;</span><br><span class="line">        results = findTopLevelUpdateables( view.getChildAt( i ), results );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> ArrayList&lt;Updateable&gt; <span class="title">findTopLevelUpdateables</span><span class="params">( View view,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                        ArrayList&lt;Updateable&gt; results )</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( ( view <span class="keyword">instanceof</span> ViewGroup ) &amp;&amp; !( view <span class="keyword">instanceof</span> Updateable ) ) &#123;</span><br><span class="line">        ViewGroup viewGroup = (ViewGroup) view;</span><br><span class="line">        <span class="keyword">int</span> childCount = viewGroup.getChildCount();</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childCount; i++ ) &#123;</span><br><span class="line">            findTopLevelUpdateables( viewGroup.getChildAt( i ), results );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Updateable result = ( view != <span class="keyword">null</span> &amp;&amp; view <span class="keyword">instanceof</span> Updateable ) ? (Updateable) view : <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span>( result != <span class="keyword">null</span> ) &#123;</span><br><span class="line">        results.add( result );</span><br><span class="line">    &#125;</span><br><span class="line">    results.trimToSize();</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样的方法可以很容易的用到<code>RelativeLayout</code>或者任何其他的<code>ViewGroup</code>中。</p>
+<p>一旦我们的类都创建好了，我们可以把他们放到用户的布局文件中，如下面的<code>activity_main.xml</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.ptrprograms.eventdrivenhierarchicalviews.view.UpdateableLinearLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    android:id=<span class="string">"@+id/root"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    android:orientation=<span class="string">"vertical"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.ptrprograms.eventdrivenhierarchicalviews.view.WeatherImage</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"300dp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.ptrprograms.eventdrivenhierarchicalviews.view.WeatherTextView</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:textSize=<span class="string">"24sp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.ptrprograms.eventdrivenhierarchicalviews.view.WeatherTemperatureTextView</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:textSize=<span class="string">"24sp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.ptrprograms.eventdrivenhierarchicalviews.view.WindWeatherTextView</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:textSize=<span class="string">"24sp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/com.ptrprograms.eventdrivenhierarchicalviews.view.UpdateableLinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>如你所视，在这个布局中，<code>UpdateableLinearLayout</code>是我们的根ViewGroup，它所有的子View都是实现了<code>Updateable</code>接口的。然而你也可以使用那些没有实现<code>Updateable</code>的View，只是当数据改变的时候他们不会自动更新。</p>
+<p>在这个例子中，我们使用<code>UpdateableLinearLayout</code>声明该布局，并在<em>MainActivity</em>的<code>onCreate</code>方法中初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.activity_main);</span><br><span class="line">mRootView = (UpdateableLinearLayout) findViewById( R.id.root );</span><br></pre></td></tr></table></figure>
+<p>在这里，我们没有使用一个活动的API来驱动我们的数据，只是简单的创建了一个方法来模拟每三秒产生一个随机的<code>Weather</code>数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startSimulation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mHandler = <span class="keyword">new</span> Handler();</span><br><span class="line">    Runnable runnable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>( mCurrentItem &gt;= mWeather.size() )</span><br><span class="line">                mCurrentItem = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            mRootView.update( mWeather.get( mCurrentItem++ ) );</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>( mHandler != <span class="keyword">null</span> )</span><br><span class="line">                mHandler.postDelayed( <span class="keyword">this</span>, <span class="number">3000</span> );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    runnable.run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们就有个由数据驱动的自定义视图。并可以在不同的地方建立多个布局文件重复使用这些自定义视图。这个技术在我日常开发中价值不可估量，我希望它对其他的安卓开发者同样有用。</p>
+<p><img src="http://treizeor.qiniudn.com/img/ddhv1.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+        <a data-url="http://simplism.life/2015/01/05/building-data-driven-hierarchical-views/" data-id="cjj5f7fyj000594r877o926i7" class="article-share-link">Share</a>
+        
+          <a href="http://simplism.life/2015/01/05/building-data-driven-hierarchical-views/#ds-thread" class="article-comment-link">Comments</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+
+  
+    
+  <!-- css -->
+  <style type="text/css">
+      .center {
+          text-align: center;
+      }
+      .hidden {
+          display: none;
+      }
+    .donate_bar a.btn_donate{
+      display: inline-block;
+      width: 82px;
+      height: 82px;
+      background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+      _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+      <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+           因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+         为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+         嵌入其它博客时不一定要它们。 -->
+      -webkit-transition: background 0s;
+      -moz-transition: background 0s;
+      -o-transition: background 0s;
+      -ms-transition: background 0s;
+      transition: background 0s;
+      <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+    }
+
+    .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+    .donate_bar .donate_txt {
+      display: block;
+      color: #9d9d9d;
+      font: 14px/2 "Microsoft Yahei";
+    }
+    .bold{ font-weight: bold; }
+  </style>
+  <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+  <!-- btn_donate & tips -->
+  <div id="donate_board" class="donate_bar center">
+     <br>
+    <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+    <span class="donate_txt">
+      Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+    </span>
+      
+    
+  </div>
+  <!-- /btn_donate & tips -->
+
+  <!-- donate guide -->
+    
+  <div id="donate_guide" class="donate_bar center hidden">
+    <br>
+
+    <a href="/img/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+      <img src="/img/wechatpay.png" title="微信打赏" height="190px" width="auto"/>
+    </a>
+        
+        &nbsp;&nbsp;
+
+    <a href="/img/alipay.png" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+      <img src="/img/alipay.png" title="支付宝打赏" height="190px" width="auto"/>
+    </a>
+
+    <span class="donate_txt">
+      Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+    </span>
+
+  </div>
+  <!-- /donate guide -->
+
+  <!-- donate script -->
+  <script type="text/javascript">
+    document.getElementById('btn_donate').onclick = function() {
+      $('#donate_board').addClass('hidden');
+      $('#donate_guide').removeClass('hidden');
+    }
+
+    function donate_on_web(){
+      $('#donate').submit();
+        }
+
+    var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+    }
+  </script>
+  <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/08/recyclerview-and-cardview/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RecyclerView和CardView使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/04/android-material-design-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Material实践Toolbar和DrawerLayout的使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/01/05/building-data-driven-hierarchical-views/" data-title="建立数据驱动的分层视图(翻译)" data-url="http://simplism.life/2015/01/05/building-data-driven-hierarchical-views/"></div>
+
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2155211"></script>
+  </section>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/13/机器学习笔记/">机器学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/13/什么是费曼技巧/">什么是费曼技巧？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/书非借不能读/">书非借不能读？书非图书馆不能读？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/雨夜，2018杂想/">雨夜，2018杂想</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/11/qml-listview-drag-to-oreder/">Qml实现ListView拖动排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt/">Qt</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openwrt/">openwrt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberrypi/">raspberrypi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习技巧/">学习技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Uranus<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+	  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	  .
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次.</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
+
+
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+<!-- uyan start -->
+<script type="text/javascript">
+var uyanQuery = {short_name:"2155211"};
+  (function() {
+    var uy = document.createElement('script');
+    uy.type = 'text/javascript';uy.async = true;
+    uy.src = 'http://v2.uyan.cc/code/uyan.js?uid=2155211';
+    uy.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(uy);
+  })();
+  </script>
+<!-- uyan end -->
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
