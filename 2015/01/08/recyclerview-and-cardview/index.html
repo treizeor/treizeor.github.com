@@ -2,6 +2,43 @@
 
 
 
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12,71 +49,98 @@
 
 
   
+  
+  
+  
 
+  
+    
+    
+  
 
-<html class="theme-next muse use-motion" lang="">
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+  
 
+  
+    
+      
+    
 
+    
+  
 
+  
+    
+      
+    
 
+    
+  
 
+  
+    
+      
+    
 
+    
+  
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
 
 
 
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="android,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。 CardView则是Google提供的一个卡片式视图组件 这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。 布局为了使用RecyclerView和CardView">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecyclerView和CardView使用">
+<meta property="og:url" content="http://simplism.life/2015/01/08/recyclerview-and-cardview/index.html">
+<meta property="og:site_name" content="Simplism Life">
+<meta property="og:description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。 CardView则是Google提供的一个卡片式视图组件 这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。 布局为了使用RecyclerView和CardView">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/recyclerview_cardview.png">
+<meta property="og:image" content="http://treizeor.qiniudn.com/img/recyclerview_onitemclick.png">
+<meta property="og:updated_time" content="2017-04-29T06:01:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RecyclerView和CardView使用">
+<meta name="twitter:description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。 CardView则是Google提供的一个卡片式视图组件 这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。 布局为了使用RecyclerView和CardView">
+<meta name="twitter:image" content="http://treizeor.qiniudn.com/img/recyclerview_cardview.png">
 
 
 
@@ -85,13 +149,15 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: false,
-    fastclick: false,
-    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -103,43 +169,14 @@
 </script>
 
 
-  
 
-
-
-
-  <meta name="description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。 CardView则是Google提供的一个卡片式视图组件 这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。 布局为了使用RecyclerView和CardView">
-<meta name="keywords" content="android">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RecyclerView和CardView使用">
-<meta property="og:url" content="http://simplism.life/2015/01/08/recyclerview-and-cardview/index.html">
-<meta property="og:site_name" content="Simplism Life">
-<meta property="og:description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。 CardView则是Google提供的一个卡片式视图组件 这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。 布局为了使用RecyclerView和CardView">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://treizeor.qiniudn.com/img/recyclerview_cardview.png">
-<meta property="og:image" content="http://treizeor.qiniudn.com/img/recyclerview_onitemclick.png">
-<meta property="og:updated_time" content="2017-04-29T06:01:24.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RecyclerView和CardView使用">
-<meta name="twitter:description" content="介绍RecyclerView是android-support-v7-21版本中新增的一个Widgets,官方介绍 RecyclerView 是 ListView 的升级版本，更加先进和灵活。 CardView则是Google提供的一个卡片式视图组件 这个例子将展示一个使用RecyclerView展示多个显示联系人资料的CardView的例子。 布局为了使用RecyclerView和CardView">
-<meta name="twitter:image" content="http://treizeor.qiniudn.com/img/recyclerview_cardview.png">
+  <link rel="canonical" href="http://simplism.life/2015/01/08/recyclerview-and-cardview/">
 
 
 
 
 
-
-  <link rel="canonical" href="http://simplism.life/2015/01/08/recyclerview-and-cardview/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>RecyclerView和CardView使用 | Simplism Life</title>
+  <title>RecyclerView和CardView使用 | Simplism Life</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -148,48 +185,20 @@
 
 
 
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -201,15 +210,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
       
-        <p class="site-subtitle">less is more.</p>
+        <h1 class="site-subtitle" itemprop="description">less is more.</h1>
       
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -217,37 +224,55 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
-  </li>
-
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -255,20 +280,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
 
@@ -281,22 +298,20 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://simplism.life/2015/01/08/recyclerview-and-cardview/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Uranus">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Simplism Life">
     </span>
 
@@ -305,55 +320,42 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RecyclerView和CardView使用
-              
-            
-          </h1>
+          <h2 class="post-title" itemprop="name headline">RecyclerView和CardView使用</h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Post created: 2015-01-08 15:00:00" itemprop="dateCreated datePublished" datetime="2015-01-08T15:00:00+08:00">2015-01-08</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-08T15:00:00+08:00">
+                2015-01-08
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-04-29 14:01:24" itemprop="dateModified" datetime="2017-04-29T14:01:24+08:00">2017-04-29</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-29T14:01:24+08:00">
+                2017-04-29
+              </time>
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -361,10 +363,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/learning/" itemprop="url" rel="index"><span itemprop="name">learning</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
 
                 
                 
@@ -377,6 +383,17 @@
           
 
           
+          
+             <span id="/2015/01/08/recyclerview-and-cardview/" class="leancloud_visitors" data-flag-title="RecyclerView和CardView使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -407,7 +424,7 @@
 <p>RecyclerView和ListView非常类似，我们可以用同样的方式放入布局里面。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- activity_main.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/cardList"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这是一个卡片布局，包含了几个TextView用来展示用户资料</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt; <span class="comment">&lt;!-- card_item.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.CardView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/card_view"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">card_view:cardCornerRadius</span>=<span class="string">"4dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:card_view</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/title"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@color/bkg_card"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"contact det"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColor</span>=<span class="string">"@android:color/white"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"14dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Name"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_below</span>=<span class="string">"@id/title"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginLeft</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtSurname"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Surname"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_below</span>=<span class="string">"@id/txtName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginLeft</span>=<span class="string">"5dp"</span></span></span><br><span class="line"><span class="tag">            /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtEmail"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Email"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginRight</span>=<span class="string">"150dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignBaseline</span>=<span class="string">"@id/txtName"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtAdd"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Address"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignStart</span>=<span class="string">"@id/txtEmail"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignBaseline</span>=<span class="string">"@id/txtSurname"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.v7.widget.CardView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span> <span class="comment">&lt;!-- card_item.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.CardView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/card_view"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">card_view:cardCornerRadius</span>=<span class="string">"4dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:card_view</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/title"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@color/bkg_card"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"contact det"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColor</span>=<span class="string">"@android:color/white"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"14dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Name"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_below</span>=<span class="string">"@id/title"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginLeft</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtSurname"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Surname"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_below</span>=<span class="string">"@id/txtName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginLeft</span>=<span class="string">"5dp"</span></span></span><br><span class="line"><span class="tag">            /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtEmail"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Email"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginRight</span>=<span class="string">"150dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignBaseline</span>=<span class="string">"@id/txtName"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/txtAdd"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"Address"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignStart</span>=<span class="string">"@id/txtEmail"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_alignBaseline</span>=<span class="string">"@id/txtSurname"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.v7.widget.CardView</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>我们先来建个联系人类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.treize.recyclerviewandcardview;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by treize on 15-1-7.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactInfo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="keyword">protected</span> String surname;</span><br><span class="line">    <span class="keyword">protected</span> String email;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME_PREFIX = <span class="string">"Name_"</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> String SURNAME_PREFIX = <span class="string">"Surname_"</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> String EMAIL_PREFIX = <span class="string">"Email_"</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>自定义的RecyclerView.Adapter</p>
@@ -427,9 +444,6 @@
 
       
     </div>
-
-    
-
     
     
     
@@ -437,7 +451,49 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>听说，赞赏了的人都变美了哦~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
 
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Uranus 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Uranus
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://simplism.life/2015/01/08/recyclerview-and-cardview/" title="RecyclerView和CardView使用">http://simplism.life/2015/01/08/recyclerview-and-cardview/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -495,6 +551,14 @@
           </div>
           
 
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzgyMS8xNDM1Mg=="></div>
+    </div>
+
   
 
 
@@ -513,6 +577,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -520,94 +586,73 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Uranus">
             
               <p class="site-author-name" itemprop="name">Uranus</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">Artikel</span>
-                  </a>
-                </div>
-              
+          <nav class="site-state motion-element">
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                    <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">Kategorien</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">8</span>
-                    <span class="site-state-item-name">Tags</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
             
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
           
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
           
 
         </div>
@@ -643,35 +688,33 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Uranus</span>
 
   
-
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
   
 </div>
 
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
 
 
 
 
         
-
 
 
 
@@ -686,6 +729,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -715,11 +760,8 @@
 
 
 
-
-
-
-
-
+  
+  
 
 
 
@@ -734,6 +776,16 @@
 
   
   
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -742,33 +794,48 @@
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
   
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
 
 
   
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
 
 
 
@@ -785,6 +852,19 @@
 
 
   
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
 
 
 
@@ -804,54 +884,147 @@
   
 
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("06IrkHJJVdlEcn6Mtla4FgrY-gzGzoHsz", "NGL3nriMDxGe0WuD9wDL6x9j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
-  
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
 
-  
-  
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
-  
-  
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
     });
-</script>
+  </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
         for (i=0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';
         }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
-    
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
-
-  
-  
 
   
 
   
 
-  
-
-  
-
-  
 
 </body>
 </html>
